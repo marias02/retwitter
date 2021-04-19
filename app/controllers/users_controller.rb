@@ -1,0 +1,120 @@
+class UsersController < ApplicationController
+  # before_action :authorized, only: [:index]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  # GET /users
+  # GET /users.json
+  def index
+    @users = User.all
+  end
+
+  # GET /users/1
+  # GET /users/1.json
+  def show
+    if params[:username] != nil
+      @looked_user = User.find_by(username: params[:username])
+    elsif params[:id] != nil
+      @looked_user = User.find(params[:id])
+    end
+  end
+
+  # GET /users/new
+  def new
+    @user = User.new
+  end
+
+  # GET /users/1/edit
+  def edit
+  end
+
+  # POST /users
+  # POST /users.json
+  def create
+    @user = User.new(user_params)
+    user = @user
+    @user.profile_picture.attach(user_params[:profile_picture])
+    if @user.username === ""
+      @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
+      @user.save
+    end
+    respond_to do |format|
+      if @user.save
+        session[:user_id] = @user.id
+        render json: user
+      else
+        render json: user.errors.full_messages
+      end
+    end
+  end
+
+  def followers
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @followers = @user.followers
+    end
+  end
+
+  def following
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @following = @user.following 
+    end
+  end
+
+  def likes
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @likes = @user.liked
+    end
+  end
+
+  def bookmarks
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @bookmarks = @user.bookmarked
+    end
+  end
+
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
+  def update
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors }
+      end
+    end
+  end
+
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @user.destroy
+    end
+   
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def user_params
+      params.require(:user).permit(:name, :phone, :email, :birthdate, :password, :profile_picture, :username)
+    end
+end
+

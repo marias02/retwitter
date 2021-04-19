@@ -1,0 +1,449 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ div.body{
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+div.left-side{
+    display: flex;
+    flex-direction: column;
+    order: -1;
+    position: sticky;
+    height: 580px;
+    top: 0;
+}
+
+div.right-side{
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    position: sticky;
+    height: 500px;
+    top: 0;
+}
+
+div.logo{
+    font-weight: 700;
+}
+
+div.logo a{
+    font-size: 30px;
+    color: #1DA1F2;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+div.logo a:hover{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #1da0f218;
+}
+
+ul.toolbar{
+    font-size: 20px;
+    padding: 0px;
+}
+
+li.ind-list{
+    list-style: none;
+    height: 50.25px;
+    box-sizing: border-box;
+    width: 251px;
+}
+
+li.ind-list a{
+    text-decoration: none;
+    color: #0F1419;
+    padding: 12px;
+}
+
+li.ind-list a:hover{
+    background-color: #1da0f218;
+    color: #1DA1F2;
+    padding: 12px;
+    border-radius: 9999px;
+}
+
+div.tweet-toolb-but a{
+    background-color: #1DA1F2;
+    color: white;
+    width: 55px;
+    border-radius: 9999px;
+    padding: 0px 32px;
+}
+
+div.tweet-toolb-but a:hover{
+    background-color: #038fe6;
+    color: white;
+    border-radius: 9999px;
+}
+
+div.feed{
+    background-color: white;
+    width: 598px;
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    border: 1px solid rgb(235, 238, 240);
+    border-top: none;
+}
+
+.prof-img{
+    border-radius: 50%;
+}
+
+div.sticky-home-container{
+    box-sizing: border-box;
+    width: 598px;
+    height: 53px;
+    border: 1px solid rgb(235, 238, 240);
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0px 16px 0px 16px;
+}
+
+div.home-title-container{
+    display: flex;
+    align-items: center;
+    width: 518px;
+    height: 53px;
+}
+
+span.home-title{
+    font-size: 20px;
+    margin: 0px;
+    color: #0F1419;
+    font-weight: bold;
+}
+
+div.moment-container{
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 0px 16px;
+}
+
+div.moment-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    font-size: 25px;
+}
+
+div.usefulness{
+    min-height: 10px;
+    min-width: 598px;
+    border: 1px solid rgb(235, 238, 240);
+    background-color: rgb(235, 238, 240);
+}
+
+ul.feed-list{
+    margin: 0px;
+    padding: 0px;
+    border-color: rgb(235, 238, 240);
+    border-right-width: 1px;
+    border-left-width: 1px;
+}
+
+li.tweete-container{
+    width: 598px;
+    list-style: none;
+}
+
+div.tweete{
+    padding: 0px 16px 0px 16px;
+    min-height: 98px;
+    width: 598px;
+    border-bottom: 1px solid rgb(235, 238, 240);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: stretch;
+    box-sizing: border-box;
+}
+
+div.tweete-left-side{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 48px;
+    max-width: 48px;
+    margin-right: 12px;
+    padding: 12px 0px 12px 0px
+}
+
+div.tweete-right-side{
+    min-width: 546px;
+    max-width: 546px;
+    box-sizing: border-box;
+    padding: 12px 0px 12px 0px;
+}
+
+b.tweete-name{
+    font-weight: bold;
+}
+
+div.tweete-top{
+    display: flex;
+    justify-content: stretch;
+    margin-bottom: 2px;
+}
+
+div.tweete-content{
+    max-width: 496px;
+    overflow-wrap: break-word;
+}
+
+img.tweete-img{
+    margin-top: 12px;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+div.button-tools{
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    margin-top: 12px;
+    width: 425px;
+    box-sizing: border-box;
+}
+
+form.like-form{
+    max-width: 25px;
+    margin: 0px;
+}
+
+form.dislike-form{
+    margin: 0px;
+    max-width: 25px;
+}
+
+form.retweete-form{
+    max-width: 25px;
+    margin: 0px;
+}
+
+form.unretweete-form{
+    max-width: 25px;
+    margin: 0px;
+}
+
+button.like{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+button.like:hover, button.dislike:hover{
+    color: red;
+    border-radius: 50%;
+    background-color: rgba(255, 0, 0, 0.123);
+    min-width: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.dislike{
+    background-color: transparent;
+    border: none;
+    color: red;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+button.retweet{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+button.retweet:hover, button.unretweete:hover{
+    background-color: rgba(0, 128, 0, 0.123);
+    color: green;
+    border-radius: 50%;
+    min-width: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.unretweete{
+    background-color: transparent;
+    color: green;
+    border: none;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+a.comment{
+    background-color: transparent;
+    border: none;
+    color: lightblue;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+form.comment-form{
+    visibility: hidden;
+}
+
+div.profile-feed{
+    max-width: 598px;
+}
+
+div.background-profile{
+    min-height: 199.33px;
+    max-height: 199.33px;
+    background-color: rgb(235, 238, 240);
+}
+
+div.profile-picture{
+    max-width: 133px;
+    max-height: 133px;
+    position: absolute;
+    top: 135px;
+    right: 830px;
+}
+
+.prof-img{
+    border: 5px solid white;
+    max-width: 133px;
+    max-height: 133px;
+}
+
+div.top-profile{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+div.top-prof-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 40px;
+    margin: 12px 12px 0px 0px;
+    box-sizing: border-box;
+}
+
+.prof-link{
+    margin: 0px 0px 12px 0px;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1DA1F2; 
+    text-decoration: none;
+    border-radius: 1999px;
+    color: #1DA1F2;
+    font-size: 15px;
+    font-weight: bold;
+    width: 125px;
+    height: 38px;
+    box-sizing: border-box;
+}
+
+.prof-link:hover{
+    background-color: #1da0f218;
+    color: #1DA1F2;
+}
+
+.prof-link:visited{
+    color: #1DA1F2;
+}
+
+h2.profile-name{
+    margin: 0px;
+}
+
+span.profile-username{
+    margin: 0px;
+    font-size: 15px;
+    font-family: apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #5B7083;
+}
+
+ul.profile-navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    padding: 0px;
+    list-style: none;
+    width: 596px;
+    height: 52px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+div.profile-top-link-cont{
+    min-width: 123px;
+    max-width: 206px;
+    min-height: 26px;
+    height: 52px;
+    padding: 12px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+a.prof-nav-link{
+    min-width: 123px;
+    max-width: 206px;
+    width: auto;
+    height: 52px;
+    padding: 12px 24px;
+    border-bottom: 2px solid rgb(29, 161, 242);
+    font-size: 15px;
+    font-family: apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: bold;
+    color: #5B7083;
+}
+
+a.prof-nav-link:hover{
+    background-color: #1da0f218;
+    color: #1DA1F2;
+}
