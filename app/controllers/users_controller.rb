@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # before_action :authorized, only: [:index]
   # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token 
 
   # GET /users
   # GET /users.json
@@ -31,20 +32,32 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    user = @user
     @user.profile_picture.attach(user_params[:profile_picture])
     if @user.username === ""
       @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
       @user.save
     end
-    respond_to do |format|
-      if @user.save
-        session[:user_id] = @user.id
-        render json: user
-      else
-        render json: user.errors.full_messages
-      end
+    if @user.birthdate.is_a? String
+        @user.birthdate = Date.parse(@user.birthdate)
+        @user.save
     end
+
+    if !@user.password_digest.instance_of?(BCrypt::Password)
+        @user.password_digest = BCrypt::Password.create(@user.password_digest)
+        @user.save
+    end
+
+    if @user.save
+        session[:user_id] = @user.id
+        user = @user
+    else
+        user = @user
+        render json: user.errors.full_messages
+    end
+  end
+
+  def cover_attachment_path
+    profile_picture.attached ? profile_picture : 'user_avatar.jpeg'
   end
 
   def followers
@@ -114,7 +127,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :phone, :email, :birthdate, :password, :profile_picture, :username)
+      params.require(:user).permit(:name, :phone, :email, :birthdate, :password_digest, :profile_picture, :username, :private)
     end
 end
 

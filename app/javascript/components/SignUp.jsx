@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Tweetes from '../components/Tweetes';
 
 class SignUp extends Component {
     constructor(props){
@@ -10,7 +11,8 @@ class SignUp extends Component {
             birthdate: '',
             password_digest: '',
             username: '',
-            private: false
+            private: false,
+            profile_picture: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
@@ -30,28 +32,39 @@ class SignUp extends Component {
     };
 
     async formSubmit(formData){
-        var data = new FormData(formData);
+        console.log(this.state)
+        var data = this.state;
         await fetch('/signup_user', {
-            Accept: 'application/json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             method: "POST",
-            mode: "cors",
-            body: data
-        }).then(response => response.text())
-        .then(res => console.log(res))
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+          .then(() => <Tweetes />);
     }
 
     render() {
         return(
             <form onSubmit={ this.handleSubmit }>
-                <input type="text" name="name" value={ this.state.name } placeholder="Name"
+                <label htmlFor="name">Name: </label>
+                <input type="text" name="name" id="name" value={ this.state.name } placeholder="Name"
                 onChange={ (e) => this.onChangeInput(e) } required />
-                <input type="text" value={ this.state.email } name="email" 
+                <label htmlFor="username">Username: </label>
+                <input type="text" name="username" id="username" value={ this.state.username }
+                onChange={ (e) => this.onChangeInput(e) } />
+                <label htmlFor="email">Email: </label>
+                <input type="text" id="email" value={ this.state.email } name="email" 
                 placeholder="Email" onChange={ this.onChangeInput } required />
-                <input type="text" name="birthdate" value={ this.state.birthdate }
+                <label htmlFor="birthdate">Birthdate: </label>
+                <input type="text" id="birthdate" name="birthdate" value={ this.state.birthdate }
                 onChange={ (e) => this.onChangeInput(e) } 
                 placeholder="Ex. Jan 15 1991" required />
-                <input type="password" onChange={ (e) => this.onChangeInput(e) } 
+                <label htmlFor="password">Password: </label>
+                <input type="password" id="password" onChange={ (e) => this.onChangeInput(e) } 
                 name="password_digest" required />
+                <input type="image" name="profile_picture" />
                 <input type="submit" value="Sign Up"/>
             </form>
         )
