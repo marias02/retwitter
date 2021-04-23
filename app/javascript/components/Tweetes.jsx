@@ -19,9 +19,6 @@ class Tweetes extends Component {
             })
             .then(response => this.setState({ tweetes: response }))
             .catch(() => this.props.history.push("/"));
-            // fetch(url)
-            //     .then(res => res.text())
-            //     .then(text => console.log(text));
     }
 
     render() {
@@ -51,6 +48,7 @@ class Tweetes extends Component {
 
         return (
             <div className="feed">
+                <h1>Good to see you again... {this.props.username}</h1>
                 <div className="sticky-home-container">
                     <div className="home-title-container">
                         <span className="home-title">Home</span>
