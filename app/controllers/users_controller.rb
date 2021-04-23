@@ -67,6 +67,10 @@ class UsersController < ApplicationController
     profile_picture.attached ? profile_picture : 'user_avatar.jpeg'
   end
 
+  def cover_attachment_path
+    profile_picture.attached ? profile_picture : 'user_avatar.jpeg'
+  end
+
   def followers
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
