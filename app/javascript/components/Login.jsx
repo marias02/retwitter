@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Tweetes from '../components/Tweetes';
+import Tweets from './Tweets';
 
 class Login extends Component{
     constructor(props){

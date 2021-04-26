@@ -15,25 +15,3 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-const app = require('express')();
-const cors = require('cors');
-const bodyParser = require('body-parser');
-
-app.use(cors());
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-    res.send("Server running");
-});
-
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    res.json({ success: "Logged in Succesfully" });
-});
-
-const port = process.env.PORT || 8080;
-
-app.listen(port);
