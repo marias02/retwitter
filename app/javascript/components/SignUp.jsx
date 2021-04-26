@@ -24,6 +24,7 @@ class SignUp extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeBirthdateOption = this.onChangeBirthdateOption.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
+        this.onChangeBdayOpt = this.onChangeBdayOpt.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
     }
 
