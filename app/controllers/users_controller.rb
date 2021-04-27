@@ -33,9 +33,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.profile_picture.attach(user_params[:profile_picture])
+    puts "username outside while: #{@user.username}"
     if @user.username == ""
       while User.find_by(username: @user.username)
         @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
+        @user.save
       end
     end
     if @user.birthdate.is_a? String
