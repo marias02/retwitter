@@ -115,12 +115,15 @@ class SignUp extends Component {
                 <Input label="Username: " htmlFor="username" inputID="username" name="username" value={ this.state.username } onChange={ this.onChangeInput } placeholder="username" type="text"/>
                 <Input label="Email: " htmlFor="email" inputID="email" name="email" value={ this.state.email } onChange={ this.onChangeInput } placeholder="Email" type="text" required="required"/>
                 <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBirthdayOption }>
+                    <option key="0.1" name="day" value="" selected="selected" disabled></option>
                     {SelectDay}
                 </select>
                 <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBirthdayOption }>
+                    <option key="0.2" name="month" value="" selected="selected" disabled></option>
                    {SelectMonth} 
                 </select>
                 <select name="years" value={this.state.year} id="years" name="year" onChange={ this.onChangeBirthdayOption }>
+                    <option key="0.3" name="year" value="" selected="selected" disabled></option>
                    {SelectYear} 
                 </select>
                 <Input label="Password: " htmlFor="password" inputID="password" name="password_digest" value={this.state.password_digest} onChange={this.onChangeInput} placeholder="Password" type="password" required="required" />
