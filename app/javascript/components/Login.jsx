@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Tweets from './Tweets';
+import Input from '../functions/Input';
 
 class Login extends Component{
     constructor(props){
@@ -7,7 +7,6 @@ class Login extends Component{
         this.state = {
             username: '',
             password: '',
-            dataarr: []
         };
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -29,13 +28,9 @@ class Login extends Component{
         return(
             <div>
                 <form onSubmit={ this.onSubmitForm } id="ajax_form" className="login">
-                    <label htmlFor="username">Username: </label>
-                    <input type="text" id="username" name="username" onChange={ this.onChangeInput }
-                    value={ this.state.username }/>
-                    <label htmlFor="password">Password: </label>
-                    <input type="text" id="password" name="password" onChange={ this.onChangeInput }
-                    value={ this.state.password } />
-                    <input type="submit" value="Login"/>
+                    <Input htmlFor="username" label="Username: " type="text" inputID="username" name="username" placeholder="Username" onChange={ this.onChangeInput } value={ this.state.username } />
+                    <Input htmlFor="password" label="Password: " type="password" inputID="password" name="password_digest" placeholder="Password" onChange={ this.onChangeInput } value={ this.state.password_digest } />
+                    <input type="submit" value="Login"/> 
                 </form> 
                 <div className={`message ${this.state.isError && 'error'}`}>
                     {this.state.isSubmitting ? "Submitting..." : this.state.message}
