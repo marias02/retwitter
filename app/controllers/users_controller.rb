@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.profile_picture.attach(user_params[:profile_picture])
     if @user.username == ""
-      while User.find_by(username: @user.username) 
+      while User.find_by(username: @user.username) && @user.username != ""
         @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
       end
       @user.save
