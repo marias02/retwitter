@@ -37,7 +37,7 @@ class SignUp extends Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
-        this.onChangeBdayOpt = this.onChangeBdayOpt.bind(this);
+        this.onChangeBirthdayOption = this.onChangeBirthdayOption.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
     }
 
@@ -79,7 +79,7 @@ class SignUp extends Component {
         });
     }
 
-    onChangeBdayOpt(e){
+    onChangeBirthdayOption(e){
         e.preventDefault();
 
         const name = e.target.name;
@@ -114,13 +114,13 @@ class SignUp extends Component {
                 <Input label="Name: " htmlFor="name" inputID="name" name="name" value={this.state.name} onChange={ this.onChangeInput } placeholder="Name" type="text" required="required" /> 
                 <Input label="Username: " htmlFor="username" inputID="username" name="username" value={ this.state.username } onChange={ this.onChangeInput } placeholder="username" type="text"/>
                 <Input label="Email: " htmlFor="email" inputID="email" name="email" value={ this.state.email } onChange={ this.onChangeInput } placeholder="Email" type="text" required="required"/>
-                <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBdayOpt }>
+                <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBirthdayOption }>
                     {SelectDay}
                 </select>
-                <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBdayOpt }>
+                <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBirthdayOption }>
                    {SelectMonth} 
                 </select>
-                <select name="years" value={this.state.year} id="years" name="year" onChange={ this.onChangeBdayOpt }>
+                <select name="years" value={this.state.year} id="years" name="year" onChange={ this.onChangeBirthdayOption }>
                    {SelectYear} 
                 </select>
                 <Input label="Password: " htmlFor="password" inputID="password" name="password_digest" value={this.state.password_digest} onChange={this.onChangeInput} placeholder="Password" type="password" required="required" />
