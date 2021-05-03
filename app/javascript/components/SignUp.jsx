@@ -1,23 +1,9 @@
 import React, { Component } from "react";
-import Tweets from './Tweets';
 import Input from '../functions/Input';
-import { Redirect } from "react-router";
-
-// i'm gonna change this approach when i see it working
-const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-    18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
-    "Sep", "Oct", "Nov", "Dec"];
-const years = [1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928, 1929,
-    1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940,
-    1941, 1942, 1943, 1944, 1945, 1946, 1947, 1948, 1949, 1950, 1951,
-    1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962,
-    1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973,
-    1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984,
-    1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
-    1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
-    2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017,
-    2018, 2019, 2020, 2021];
+import BirthDay from '../functions/BirthDay';
+import BirthMonth from '../functions/BirthMonth';
+import BirthYear from '../functions/BirthYear';
+const yearMax = new Date().getFullYear() - 1;
 
 class SignUp extends Component {
     constructor(props){
@@ -64,7 +50,7 @@ class SignUp extends Component {
                 name: this.state.name,
                 phone: this.state.phone,
                 email: this.state.email,
-                birthdate: `${this.state.day} ${this.state.month} ${this.state.year}`,
+                birthdate: `${this.state.month} ${this.state.day} ${this.state.year}`,
                 password_digest: this.state.password_digest,
                 username: this.state.username, 
                 private: this.state.private,
@@ -81,51 +67,41 @@ class SignUp extends Component {
 
     onChangeBirthdayOption(e){
         e.preventDefault();
-
         const name = e.target.name;
         const value = e.target.value;
-
+        console.log('this is the name arg: ', name);
+        console.log('this is the target.value: ', value);
         this.setState({
             [name]: `${value}`
         })
     }
 
     render() {
-
-        const SelectDay = days.map((day, index) => {
-                    return (
-                        <option key={index} name="day" value={day}>{day}</option>
-                    )
-                })
-
-        const SelectMonth = months.map((month, index) => {
-                        return (
-                            <option key={index} name="month" value={month}>{month}</option>  
-                        )
-                    })
-
-        const SelectYear = years.map((year, index) => {
-                        return ( 
-                            <option key={index} name="year" value={year}>{year}</option>
-                        )
-                    }) 
+        console.log(this.state.month);
+        console.log(this.state.day);
+        console.log(this.state.year);
+        const birthdate = `${this.state.month} ${this.state.day} ${this.state.year}`
         return(
             <form onSubmit={ this.handleSubmit }>
                 <Input label="Name: " htmlFor="name" inputID="name" name="name" value={this.state.name} onChange={ this.onChangeInput } placeholder="Name" type="text" required="required" /> 
                 <Input label="Username: " htmlFor="username" inputID="username" name="username" value={ this.state.username } onChange={ this.onChangeInput } placeholder="username" type="text"/>
                 <Input label="Email: " htmlFor="email" inputID="email" name="email" value={ this.state.email } onChange={ this.onChangeInput } placeholder="Email" type="text" required="required"/>
-                <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBirthdayOption }>
+                {/* <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBirthdayOption }>
                     <option key="0.1" name="day" value="" selected="selected" disabled></option>
                     {SelectDay}
-                </select>
-                <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBirthdayOption }>
+                </select> */}
+                <BirthMonth optionName="month" selectName="months" selectValue={ this.state.month } selectID="months" selectOnChange={ this.onChangeBirthdayOption } />
+                <BirthDay optionName="day" selectName="days" selectValue={ this.state.day } selectID="days" selectOnChange={ this.onChangeBirthdayOption } />
+                <BirthYear optionName="year" selectName="years" selectValue={ this.state.year } selectID="years" selectOnChange={ this.onChangeBirthdayOption } />
+                <p>{ Date.parse(birthdate).valid_date? }</p>
+                {/* <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBirthdayOption }>
                     <option key="0.2" name="month" value="" selected="selected" disabled></option>
                    {SelectMonth} 
                 </select>
                 <select name="years" value={this.state.year} id="years" name="year" onChange={ this.onChangeBirthdayOption }>
                     <option key="0.3" name="year" value="" selected="selected" disabled></option>
                    {SelectYear} 
-                </select>
+                </select> */}
                 <Input label="Password: " htmlFor="password" inputID="password" name="password_digest" value={this.state.password_digest} onChange={this.onChangeInput} placeholder="Password" type="password" required="required" />
                 <Input label="Profile Picture " htmlFor="profile_picture" inputID="profile_picture" name="profile_picture" value={this.state.profile_picture} onChange={ this.onChangeInput } type="file" />
                 <input type="submit" value="Sign Up"/>
