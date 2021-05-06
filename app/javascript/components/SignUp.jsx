@@ -21,7 +21,7 @@ class SignUp extends Component {
             registered_user: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onChangeBirthdayOption = this.onChangeBirthdayOption.bind(this);
+        this.onChangeBirthdateOption = this.onChangeBirthdateOption.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
     }
@@ -32,7 +32,7 @@ class SignUp extends Component {
         this.setState({[name]: value});
     }
 
-    onChangeBirthdayOption(e) {
+    onChangeBirthdateOption(e) {
         e.preventDefault();
         const name = e.target.name;
         const value = e.target.value;
@@ -78,18 +78,18 @@ class SignUp extends Component {
                 <Input label="Name: " htmlFor="name" inputID="name" name="name" value={this.state.name} onChange={ this.onChangeInput } placeholder="Name" type="text" required="required" /> 
                 <Input label="Username: " htmlFor="username" inputID="username" name="username" value={ this.state.username } onChange={ this.onChangeInput } placeholder="username" type="text"/>
                 <Input label="Email: " htmlFor="email" inputID="email" name="email" value={ this.state.email } onChange={ this.onChangeInput } placeholder="Email" type="text" required="required"/>
-                {/* <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBirthdayOption }>
+                {/* <select name="days" value={this.state.day} id="days" name="day" onChange={ this.onChangeBirthdateOption }>
                     <option key="0.1" name="day" value="" selected="selected" disabled></option>
                     {SelectDay}
                 </select> */}
-                <BirthMonth optionName="month" selectName="month" selectValue={ this.state.month } selectID="months" onChange={ this.onChangeBirthdayOption } />
-                <BirthDay optionName="day" selectName="day" selectValue={ this.state.day } selectID="days" onChange={ this.onChangeBirthdayOption } />
-                <BirthYear optionName="year" selectName="year" selectValue={ this.state.year } selectID="years" onChange={ this.onChangeBirthdayOption } />
-                {/* <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBirthdayOption }>
+                <BirthMonth optionName="month" selectName="month" selectValue={ this.state.month } selectID="months" onChange={ this.onChangeBirthdateOption } />
+                <BirthDay optionName="day" selectName="day" selectValue={ this.state.day } selectID="days" onChange={ this.onChangeBirthdateOption } />
+                <BirthYear optionName="year" selectName="year" selectValue={ this.state.year } selectID="years" onChange={ this.onChangeBirthdateOption } />
+                {/* <select name="months" value={this.state.month} id="months" name="month" onChange={ this.onChangeBirthdateOption }>
                     <option key="0.2" name="month" value="" selected="selected" disabled></option>
                    {SelectMonth} 
                 </select>
-                <select name="years" value={this.state.year} id="years" name="year" onChange={ this.onChangeBirthdayOption }>
+                <select name="years" value={this.state.year} id="years" name="year" onChange={ this.onChangeBirthdateOption }>
                     <option key="0.3" name="year" value="" selected="selected" disabled></option>
                    {SelectYear} 
                 </select> */}
