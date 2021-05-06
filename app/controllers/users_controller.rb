@@ -39,10 +39,21 @@ class UsersController < ApplicationController
         @user.save
       end
     end
-    if @user.birthdate.is_a? String && Date.parse(@user.birthdate).valid_date?
-        @user.birthdate = Date.parse(@user.birthdate)
+    if @user.birthdate.is_a? String
+      @user.birthdate = Date.parse(@user.birthdate)
+      if Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
         @user.save
+      else 
+        render json: "Not a valid date"
+      end
+    else
+      if Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
+        @user.save
+      else
+        render json: "Not a valid date"
+      end
     end
+    
 
     if !@user.password_digest.instance_of?(BCrypt::Password)
         @user.password_digest = BCrypt::Password.create(@user.password_digest)
