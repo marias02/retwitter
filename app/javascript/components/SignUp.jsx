@@ -25,6 +25,7 @@ class SignUp extends Component {
         this.onChangeBirthdateOption = this.onChangeBirthdateOption.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onChangeBirthdayOption = this.onChangeBirthdayOption.bind(this);
+        this.onChangeInput = this.onChangeInput.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
     }
 
@@ -34,7 +35,11 @@ class SignUp extends Component {
         this.setState({[name]: value});
     }
 
+<<<<<<< HEAD
     onChangeBirthdateOption(e) {
+=======
+    onChangeBirthdayOption(e) {
+>>>>>>> Making user unable to enter an unvalid date
         e.preventDefault();
         const name = e.target.name;
         const value = e.target.value;
