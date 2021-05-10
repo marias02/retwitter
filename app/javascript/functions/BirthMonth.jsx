@@ -7,9 +7,9 @@ function BirthMonth({ optionName, selectName, selectValue, selectID, onChange })
 
     months.push(<option name={optionName} key="0.1" value="" selected disabled></option>)
 
-    for (let i = 0; i < monthsArr.length; i++) {
-        months.push(<option key={i.toString()} name={optionName} value={monthsArr[i]}>{monthsArr[i]}</option>)
-    }
+    monthsArr.forEach((month, i) => {
+        months.push(<option key={i.toString()} name={optionName} value={month}>{month}</option>)
+    });
 
     return (
         <select name={selectName} value={selectValue} id={selectID} onChange={ onChange }>
