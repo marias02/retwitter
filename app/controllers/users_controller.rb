@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     if @user.username == ""
       while User.find_by(username: @user.username)
         @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
-        @user.save
       end
     end
     if @user.birthdate.is_a? String
