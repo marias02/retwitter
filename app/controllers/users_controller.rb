@@ -36,20 +36,15 @@ class UsersController < ApplicationController
     if @user.username == ""
       while User.find_by(username: @user.username) && @user.username == ""
         @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
-        @user.save
       end
     end
     if @user.birthdate.is_a? String
       @user.birthdate = Date.parse(@user.birthdate)
-      if Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
-        @user.save
-      else 
+      if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year) 
         render json: "Not a valid date"
       end
     else
-      if Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
-        @user.save
-      else
+      if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
         render json: "Not a valid date"
       end
     end
@@ -57,7 +52,6 @@ class UsersController < ApplicationController
 
     if !@user.password_digest.instance_of?(BCrypt::Password)
         @user.password_digest = BCrypt::Password.create(@user.password_digest)
-        @user.save
     end
 
     if @user.save
