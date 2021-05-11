@@ -47,7 +47,7 @@ class SignUp extends Component {
     };
 
     async formSubmit(){
-        signUpUser({ name: this.state.name, phone: this.state.phone, 
+        await signUpUser({ name: this.state.name, phone: this.state.phone, 
             email: this.state.email, 
             birthdate: `${this.state.month} ${this.state.day} ${this.state.year}`,
             password_digest: this.state.password_digest,

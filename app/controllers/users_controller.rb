@@ -41,11 +41,11 @@ class UsersController < ApplicationController
     if @user.birthdate.is_a? String
       @user.birthdate = Date.parse(@user.birthdate)
       if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year) 
-        render json: "Not a valid date"
+        flash[:error] = "Not a valid date" 
       end
     else
       if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
-        render json: "Not a valid date"
+        flash[:error] = "Not a valid date"
       end
     end
     
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
         user = @user
     else
         user = @user
-        render json: user.errors.full_messages
+        flash[:error] = user.errors.full_messages
     end
   end
 
