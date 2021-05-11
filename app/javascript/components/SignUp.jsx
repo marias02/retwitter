@@ -53,7 +53,7 @@ class SignUp extends Component {
             password_digest: this.state.password_digest,
             username: this.state.username, private: this.state.private,
             profile_picture: this.state.profile_picture
-        })
+        }, this.props.history)
     }
 
     render() {
