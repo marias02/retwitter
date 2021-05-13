@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/tweetes/index', to: 'tweetes#index'
   get '/login', to: 'sessions#new'
   post '/login_user', to: 'sessions#create'
+  delete '/logout_user', to: 'users#destroy'
   get '/signup', to: 'users#new'
   post '/signup_user', to: 'users#create'
   get '/users', to: 'users#index'
