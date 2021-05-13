@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post '/login_user', to: 'sessions#create'
   get '/signup', to: 'users#new'
   post '/signup_user', to: 'users#create'
+  get '/users', to: 'users#index'
   get '/*path' => 'homepage#index'
 end
