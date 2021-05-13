@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import UserBox from "../components/UserBox";
+import Link from "react-router-dom";
 
 class Tweets extends Component {
     constructor(props) {
@@ -46,9 +48,13 @@ class Tweets extends Component {
             </li>
         ));
 
+
+        const username = this.props.location.state.cur_usr_username;
+
         return (
             <div className="feed">
-                <h1>Good to see you again... {this.props.location.state.cur_usr_username}</h1>
+                <h1>Good to see you again... {username}</h1>
+                <UserBox username={username} />
                 <div className="sticky-home-container">
                     <div className="home-title-container">
                         <span className="home-title">Home</span>

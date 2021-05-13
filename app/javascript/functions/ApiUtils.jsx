@@ -35,3 +35,18 @@ export const loginUser = (user, redirect) => {
         };
     });
 }
+
+export const logoutUser = redirect => {
+    fetch('/logout_user', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "DELETE"
+    }).then(response => {
+        response.json();
+        if(response.status === 204 || response.status === 200){
+            redirect.push("/")
+        };
+    });
+}
