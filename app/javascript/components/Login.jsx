@@ -11,7 +11,6 @@ class Login extends Component{
         };
         this.onChangeInput = this.onChangeInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onSubmitForm = this.onSubmitForm.bind(this);
     }
 
     onChangeInput = e => {
@@ -22,17 +21,13 @@ class Login extends Component{
         });
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
 
-        this.onSubmitForm(e.target);
-    }
-
-    async onSubmitForm(e){
         await loginUser({
-            username: this.state.username, 
+            username: this.state.username,
             password_digest: this.state.password_digest
-        }, this.props.history)
+        })
     }
 
     render(){

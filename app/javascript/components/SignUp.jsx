@@ -25,7 +25,6 @@ class SignUp extends Component {
         this.onChangeBirthdateOption = this.onChangeBirthdateOption.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
-        this.formSubmit = this.formSubmit.bind(this);
     }
 
     onChangeInput(e){
@@ -41,21 +40,18 @@ class SignUp extends Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
 
-        this.formSubmit(e.target);
-    };
-
-    async formSubmit(){
-        await signUpUser({ name: this.state.name, phone: this.state.phone, 
-            email: this.state.email, 
+        await signUpUser({
+            name: this.state.name, phone: this.state.phone,
+            email: this.state.email,
             birthdate: `${this.state.month} ${this.state.day} ${this.state.year}`,
             password_digest: this.state.password_digest,
             username: this.state.username, private: this.state.private,
             profile_picture: this.state.profile_picture
-        }, this.props.history)
-    }
+        })
+    };
 
     render() {
         const birthdate = `${this.state.month} ${this.state.day} ${this.state.year}`

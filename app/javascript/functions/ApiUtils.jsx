@@ -1,4 +1,4 @@
-export const signUpUser = (user, redirect) => {
+export const signUpUser = user => {
     fetch('/signup_user', {
         headers: {
             'Accept': 'application/json',
@@ -8,16 +8,10 @@ export const signUpUser = (user, redirect) => {
         body: JSON.stringify(user)
     }).then(response => {
         response.json();
-        if (response.status === 204 || response.status === 200){
-            redirect.push({
-                pathname: "/home", 
-                state: {cur_usr_username: user.username}
-            })
-        };
     });
 }
 
-export const loginUser = (user, redirect) => {
+export const loginUser = user => {
     fetch('/login_user', {
         headers: {
             'Accept': 'application/json',
@@ -27,16 +21,10 @@ export const loginUser = (user, redirect) => {
         body: JSON.stringify(user)
     }).then(response => {
         response.json();
-        if(response.status === 204 || response.status === 200){
-            redirect.push({
-                pathname: "/home",
-                state: {cur_usr_username: user.username}
-            })
-        };
     });
 }
 
-export const logoutUser = redirect => {
+export const logoutUser = () => {
     fetch('/logout_user', {
         headers: {
             'Accept': 'application/json',
@@ -45,8 +33,5 @@ export const logoutUser = redirect => {
         method: "DELETE"
     }).then(response => {
         response.json();
-        if(response.status === 204 || response.status === 200){
-            redirect.push("/")
-        };
     });
 }
