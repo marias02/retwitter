@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  # before_action :authorized, only: [:index]
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token 
 
   # GET /users
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.profile_picture.attach(user_params[:profile_picture])
     if @user.username == ""
-      while User.find_by(username: @user.username) && @user.username == ""
+      while User.find_by(username: @user.username)
         @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
       end
     end
@@ -61,6 +59,10 @@ class UsersController < ApplicationController
         user = @user
         flash[:error] = user.errors.full_messages
     end
+  end
+
+  def cover_attachment_path
+    profile_picture.attached ? profile_picture : 'user_avatar.jpeg'
   end
 
   def cover_attachment_path

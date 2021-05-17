@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from '../functions/Input';
+import { loginUser } from '../functions/ApiUtils';
 
 class Login extends Component{
     constructor(props){
@@ -9,7 +10,7 @@ class Login extends Component{
             password: '',
         };
         this.onChangeInput = this.onChangeInput.bind(this);
-        this.onSubmitForm = this.onSubmitForm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     onChangeInput = e => {
@@ -20,14 +21,19 @@ class Login extends Component{
         });
     }
 
-    onSubmitForm(e){
-        
+    async handleSubmit(e){
+        e.preventDefault();
+
+        await loginUser({
+            username: this.state.username,
+            password_digest: this.state.password_digest
+        })
     }
 
     render(){
         return(
             <div>
-                <form onSubmit={ this.onSubmitForm } id="ajax_form" className="login">
+                <form onSubmit={ this.handleSubmit }>
                     <Input htmlFor="username" label="Username: " type="text" inputID="username" name="username" placeholder="Username" onChange={ this.onChangeInput } value={ this.state.username } />
                     <Input htmlFor="password" label="Password: " type="password" inputID="password" name="password_digest" placeholder="Password" onChange={ this.onChangeInput } value={ this.state.password_digest } />
                     <input type="submit" value="Login"/> 
