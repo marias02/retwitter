@@ -1,12 +1,22 @@
 import React from "react";
 
-function Input({ label, htmlFor, inputID, name, value, onChange, placeholder, type, required }) {
-    return (
-        <div>
-            <label htmlFor={htmlFor}>{label}</label>
-            <input type={type} id={inputID} name={name} value={value} onChange={ onChange } placeholder={placeholder} required={required} />
-        </div>
-    )
+function Input({ label, labelClass, inputID, inputClass, name, value, onChange, type, required }) {
+    if (required === "true"){
+        return (
+            <div className="container">
+                <input type={type} id={inputID} className={inputClass} name={name} value={value} onChange={ onChange } required />
+                <span className={labelClass}>{label}</span>
+            </div>
+        )  
+    } else {
+        return (
+            <div className="container">
+                <input type={type} id={inputID} className={inputClass} name={name} value={value} onChange={onChange} />
+                <span className={labelClass}>{label}</span>
+            </div>
+        )
+    }
+    
 }
 
 export default Input;

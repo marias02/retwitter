@@ -12,9 +12,13 @@ function BirthMonth({ optionName, selectName, selectValue, selectID, onChange })
     });
 
     return (
-        <select name={selectName} value={selectValue} id={selectID} onChange={ onChange }>
-            {months}
-        </select>
+        <div className="container-birthdate month">
+            <span htmlFor={selectName} className="birthdate month">Month</span>
+            <select className="birthdate-selecter month" name={selectName} value={selectValue} id={selectID} onChange={ onChange }>
+                {months}
+            </select> 
+        </div>
+        
     );
 }
 

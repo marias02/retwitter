@@ -10,9 +10,13 @@ function BirthDay({ optionName, selectName, selectValue, selectID, onChange }) {
     }
 
     return (
-        <select name={ selectName } value={ selectValue } id={ selectID } onChange={ onChange }>
-            { days }
-        </select>
+        <div className="container-birthdate day">
+            <span htmlFor={ selectName } className="birthdate day">Day</span>
+            <select className="birthdate-selecter day" name={ selectName } value={ selectValue } id={ selectID } onChange={ onChange }>
+                { days }
+            </select>  
+        </div>
+        
     );
 }
 
