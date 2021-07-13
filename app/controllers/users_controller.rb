@@ -33,16 +33,19 @@ class UsersController < ApplicationController
     @user.profile_picture.attach(user_params[:profile_picture])
     if @user.username == ""
       while User.find_by(username: @user.username)
-        @user.username = @user.name + rand((User.all.length)..(User.all.length * 100000000)).to_s
+        @user.username = @user.name + 
+        rand((User.all.length)..(User.all.length * 100000000)).to_s
       end
     end
     if @user.birthdate.is_a? String
       @user.birthdate = Date.parse(@user.birthdate)
-      if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year) 
+      if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, 
+        @user.birthdate.year) 
         flash[:error] = "Not a valid date" 
       end
     else
-      if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, @user.birthdate.year)
+      if !Date.valid_date?(@user.birthdate.month, @user.birthdate.day, 
+        @user.birthdate.year)
         flash[:error] = "Not a valid date"
       end
     end
@@ -105,7 +108,8 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User was successfully 
+        updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -123,7 +127,8 @@ class UsersController < ApplicationController
     end
    
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, 
+      notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -136,7 +141,8 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :phone, :email, :birthdate, :password_digest, :profile_picture, :username, :private)
+      params.require(:user).permit(:name, :phone, :email, :birthdate, 
+      :password_digest, :profile_picture, :username, :private, :biography)
     end
 end
 
