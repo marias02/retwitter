@@ -1,0 +1,69 @@
+#sign_up_landing_page{
+    margin-bottom: 20px;
+}
+
+#sign_up_landing_page, #login_landing_page{
+    width: 45%;
+    height: 4%;
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#login_landing_page{
+    background-color: white;
+    border: 1px solid #1DA1F2;
+    color: #1DA1F2;
+}
+
+#landing_page_background{
+    width: 649px;
+    height: 716px;
+}
+
+.top_landing_page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.right_landing_page{
+    width: 60%;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#landing_page_title{
+    font-size: 64px;
+}
+
+#landing_page_title, #landing_page_subtitle{
+    font-family: TwitterChirpExtendedHeavy, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#landing_page_subtitle{
+    font-size: 31px;
+}
+
+.right_landing_page > .fa.fa-twitter {
+    font-size: 45px;
+}
+
+.footer_landing_page{
+    margin: 0px;
+}
+
+.back_landing_page{
+    color: gray;
+    background-color: white;
+    font-size: 20px;
+    font-weight: lighter;
+    padding: 0px;
+    display: flex; 
+    align-items: center;
+    width: 17px;
+}

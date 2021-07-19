@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { signUpUser } from "../functions/ApiUtils";
 import FormUserDetails from './FormUserDetails'
+import Confirm from './Confirm'
 
 class SignUp extends Component {
 
@@ -210,8 +211,7 @@ class SignUp extends Component {
             case 6:
                 return (
                     <div className="form">
-                        <FormUserDetails 
-                            step={ this.state.step }
+                        <Confirm
                             nextStep={ this.nextStep }
                             prevStep={ this.prevStep }
                             handleChange={ this.onChangeInput }
@@ -221,26 +221,6 @@ class SignUp extends Component {
                     </div>
                 )
         }
-
-        // return(
-        //     <form onSubmit={ this.handleSubmit }>
-        //         {this.state.first_step === false ? <div>
-        //         <Input label="Name: " htmlFor="name" inputID="name" name="name" value={this.state.name} onChange={ this.onChangeInput } placeholder="Name" type="text" required="required" /> 
-        //         <Input label="Email: " htmlFor="email" inputID="email" name="email" value={ this.state.email } onChange={ this.onChangeInput } placeholder="Email" type="text" required="required"/>
-        //         <BirthMonth optionName="month" selectName="month" selectValue={ this.state.month } selectID="months" onChange={ this.onChangeBirthdateOption } />
-        //         <BirthDay optionName="day" selectName="day" selectValue={ this.state.day } selectID="days" onChange={ this.onChangeBirthdateOption } />
-        //         <BirthYear optionName="year" selectName="year" selectValue={ this.state.year } selectID="years" onChange={ this.onChangeBirthdateOption } />  
-        //         <button onClick={ this.nextStep() }>Next</button>
-        //     </div> : <div>
-        //         <Input label="Username: " htmlFor="username" inputID="username" name="username" value={ this.state.username } onChange={ this.onChangeInput } placeholder="username" type="text"/>
-        //         <Input label="Password: " htmlFor="password" inputID="password" name="password_digest" value={this.state.password_digest} onChange={this.onChangeInput} placeholder="Password" type="password" required="required" />
-        //     </div>}
-                
-                
-        //         <Input label="Profile Picture " htmlFor="profile_picture" inputID="profile_picture" name="profile_picture" value={this.state.profile_picture} onChange={ this.onChangeInput } type="file" />
-        //         <input type="submit" value="Sign Up"/>
-        //     </form>
-        // )
     }
 }
 

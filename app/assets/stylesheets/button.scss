@@ -1,0 +1,137 @@
+button, .button{
+    background-color: #1DA1F2;
+    color: white;
+    width: 55px;
+    border-radius: 9999px;
+    padding: 10px 32px;
+    border: 0;
+    display: flex;
+    font-weight: 550;
+    font-size: 15px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#next_confirm_button{
+    visibility: hidden;
+}
+
+#confirm_button{
+    width: 90%;
+    display: flex;
+    margin-left: 30px;
+}
+
+div.moment-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    font-size: 25px;
+}
+
+div.button-tools{
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    margin-top: 12px;
+    width: 425px;
+    box-sizing: border-box;
+}
+
+button.like{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+button.like:hover, button.dislike:hover{
+    color: red;
+    border-radius: 50%;
+    background-color: rgba(255, 0, 0, 0.123);
+    min-width: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.dislike{
+    background-color: transparent;
+    border: none;
+    color: red;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+button.retweet{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+button.retweet:hover, button.unretweete:hover{
+    background-color: rgba(0, 128, 0, 0.123);
+    color: green;
+    border-radius: 50%;
+    min-width: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.unretweete{
+    background-color: transparent;
+    color: green;
+    border: none;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+div.top-prof-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 40px;
+    margin: 12px 12px 0px 0px;
+    box-sizing: border-box;
+}
+
+.profile_picture_button{
+    border-radius: 50%;
+    border: 3px solid gray;
+    margin: 80px auto;
+    background-size: 100% 100%;
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+div.tweet-toolb-but a{
+    background-color: #1DA1F2;
+    color: white;
+    width: 55px;
+    border-radius: 9999px;
+    padding: 0px 32px;
+}
+
+div.tweet-toolb-but a:hover{
+    background-color: #038fe6;
+    color: white;
+    border-radius: 9999px;
+}
+
+textarea {
+    resize: none;
+}
