@@ -1,62 +1,61 @@
 import React, { Component } from "react"
 import Input from '../functions/Input'
+import ContainedButton from '../functions/ContainedButton'
+import IconButton from '../functions/IconButton'
 
 export class Confirm extends Component{
+    continue = e => {
+        e.preventDefault();
+
+        this.props.nextStep();
+    }
+
+    back = e => {
+        e.preventDefault();
+
+        this.props.prevStep();
+    }
+
     render(){
+        const { name, email, phone, day, month, year } = this.props.values;
+
         return (
-            <div className="first_step_form">
+            <div className="step_form">
                 <div className="top-form">
-                    <button onClick={this.back}
-                        className="back_landing_page"><i
-                            className="fa fa-arrow-left"
-                            aria-hidden="true"></i>
-                    </button>
+                    <IconButton onClick={ this.back }
+                    iconClass="fa fa-arrow-left"/>
                     <i className="fa fa-twitter"></i>
-                    <button onClick={this.continue}
-                        id="next_confirm_button">Next</button>
+                    <ContainedButton onClick={ this.continue }
+                    className="confirm_next" Text="Next" type="primary" />
                 </div>
 
                 <h2>Create your account</h2>
-                <div className="container">
-                    <input type="text" id="name" className="form_field"
-                        name="name" value={this.props.values.name} readOnly />
-                    <span className="form_label confirm">Name</span>
-                </div>
+                <Input type="text" inputID="name" inputClass="form_field" 
+                name="name" value={ name } readOnly="true" 
+                labelClass="form_label confirm" label="Name" />
 
                 {
-                    this.props.values.phone === '' && 
-                    this.props.values.email !== '' ? (
-                        <div className="container">
-                            <input type="text" id="email"
-                                className="form_field" name="email"
-                                value={this.props.values.email} readOnly />
-                            <span className="form_label confirm">Email</span>
-                        </div>
+                    phone === '' && email !== '' ? (
+                        <Input type="text" inputID="email" 
+                        inputClass="form_field" name="email" value={ email } 
+                        readOnly="true" labelClass="form_label confirm" label="Email" />
                     ) : (
-                        <div className="container">
-                            <input type="text" id="phone"
-                                className="form_field" name="phone"
-                                value={this.props.values.phone} readOnly />
-                            <span className="form_label confirm">Phone</span>
-                        </div>
+                        <Input type="text" inputID="phone" inputClass="form_field" 
+                        name="phone" value={ phone } readOnly="true" 
+                        labelClass="form_label confirm" label="Phone" />
                     )
                 }
 
-                <div className="container">
-                    <input type="text" id="birthdate"
-                        className="form_field" name="birthdate"
-                        value={`${this.props.values.day} 
-                            ${this.props.values.month} 
-                            ${this.props.values.year}`} readOnly />
-                    <span className="form_label confirm">Birth date</span>
-                </div>
+                <Input type="text" inputID="birthdate" inputClass="form_field" 
+                name="birthdate" value={`${ day } ${ month } ${ year }`}
+                readOnly="true" labelClass="form_label confirm" label="Birth date" />
 
-                <p id="confirm_p">By signing up you agree our
-                cookies use. Others will be able to find you by email
-                or phone number when
-                        provided.</p>
+                <p id="confirm_p">By signing up you agree our cookies use. 
+                Others will be able to find you by email or phone number when 
+                provided.</p>
 
-                <button id="confirm_button" onClick={this.props.handleSubmit}>Sign Up</button>
+                <ContainedButton className="confirm" 
+                onClick={ this.props.handleSubmit } type="primary" Text="Sign Up" />
             </div>
         )
     }

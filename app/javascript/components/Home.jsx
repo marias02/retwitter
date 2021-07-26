@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ContainedButton from '../functions/ContainedButton'
+import OutlinedButton from '../functions/OutlinedButton'
 
 export default () => (
     <div>
@@ -11,8 +12,11 @@ export default () => (
                 <i className="fa fa-twitter"></i>
                 <h1 id="landing_page_title">Happening now</h1>
                 <h3 id="landing_page_subtitle">Join Retwitter today.</h3>
-                <Link className="button" id="sign_up_landing_page" to="/signup">Sign up</Link>
-                <Link className="button" id="login_landing_page" to="/login">Log in</Link>
+                <ContainedButton type="link" buttonId="sign_up_landing_page" 
+                route="/signup" Text="Sign Up" />
+                <OutlinedButton type="link" buttonId="login_landing_page" 
+                route="/login" Text="Log in" />
+                
             </div>
         </div>
         <div className="footer">

@@ -3,6 +3,8 @@ import Input from '../functions/Input';
 import BirthDay from '../functions/BirthDay';
 import BirthMonth from '../functions/BirthMonth';
 import BirthYear from '../functions/BirthYear';
+import ContainedButton from '../functions/ContainedButton';
+import IconButton from "../functions/IconButton";
 
 export class FormUserDetails extends Component {
     continue = e => {
@@ -19,55 +21,67 @@ export class FormUserDetails extends Component {
 
     render(){
         const step = this.props.step;
+
+        const { name, email, month, day, year, password_digest, username, 
+            profile_private, biography, bio_characters, isUploaded,
+            profile_picture } = 
+            this.props.values;
+
+        const { handleChange, handleClick, handleImageChange, editProfilePicture } 
+        = this.props;
+
         switch(step){
             case 1:
                 return (
-                    <div className="first_step_form">
-                        <div className="top-form first-step">
+                    <div className="step_form">
+                        <div className="top-form">
+                            <IconButton onClick={ this.back }
+                                buttonClass="first"
+                                iconClass="fa fa-arrow-left" />
                             <i className="fa fa-twitter"></i>
-                            <button onClick={ this.continue }>Next</button> 
+                            <ContainedButton onClick={ this.continue } 
+                            type="primary" Text="Next" />
                         </div>
                         
                         <h2 className="form_title">Create your account</h2>
                         <Input labelClass="form_label" label="Name " 
                         inputClass="form_field" inputID="name" name="name" 
-                        value={ this.props.values.name } 
-                        onChange={ this.props.handleChange } 
+                        value={ name } 
+                        onChange={ handleChange } 
                         type="text" required="true" />
                         <br/>
                         <Input labelClass="form_label" label="Email " 
                         inputClass="form_field"  inputID="email" name="email" 
-                        value={ this.props.values.email } 
-                        onChange={ this.props.handleChange } 
-                        type="text" required="true"/>
+                        value={ email } 
+                        onChange={ handleChange } 
+                        type="text" required="true" />
                         <h4>Date of birth</h4>
                         <p>This will not be shown publicly. Confirm your own 
                             age, even if this account is for a business, a pet, 
                             or something else.</p>
                         <div className="select-birthdate">
                             <BirthMonth optionName="month" selectName="month" 
-                            selectValue={ this.props.values.month } 
+                            selectValue={ month } 
                             selectID="months" 
-                            onChange={ this.props.handleChange } />
+                            onChange={ handleChange } />
                             <BirthDay optionName="day" selectName="day" 
-                            selectValue={ this.props.values.day } selectID="days" 
-                            onChange={ this.props.handleChange } />
+                            selectValue={ day } selectID="days" 
+                            onChange={ handleChange } />
                             <BirthYear optionName="year" selectName="year" 
-                            selectValue={ this.props.values.year } 
-                            selectID="years" onChange={ this.props.handleChange } />  
+                            selectValue={ year } 
+                            selectID="years" onChange={ handleChange } />  
                         </div>
                     </div>
                 )
             case 2: 
                 return (
-                    <div className="second_step_form">
+                    <div className="step_form">
                         <div className="top-form">
-                            <button onClick={ this.back } 
-                            className="back_landing_page"><i 
-                            className="fa fa-arrow-left" aria-hidden="true"></i>
-                            </button>
+                            <IconButton onClick={ this.back }
+                                iconClass="fa fa-arrow-left" />
                             <i className="fa fa-twitter"></i>
-                            <button onClick={ this.continue }>Next</button>
+                            <ContainedButton onClick={ this.continue } 
+                            type="primary" Text="Next" />
                         </div>
                         
                         <h2 className="form_title">You'll need a password</h2>
@@ -75,33 +89,31 @@ export class FormUserDetails extends Component {
                         <Input labelClass="form_label" label="Password " 
                         inputClass="form_field" inputID="password" 
                         name="password_digest" 
-                        value={this.props.values.password_digest} 
-                        onChange={ this.props.handleChange } type="password" 
+                        value={ password_digest } 
+                        onChange={ handleChange } type="password" 
                         required="true" />
                     </div>
                 )
             case 3:
                 return (
-                    <div className="third_step_form">
+                    <div className="step_form">
                         <div className="top-form">
-                            <button onClick={ this.back } 
-                            className="back_landing_page"><i 
-                            className="fa fa-arrow-left" aria-hidden="true"></i>
-                            </button>
+                            <IconButton onClick={ this.back }
+                                iconClass="fa fa-arrow-left" />
                             <i className="fa fa-twitter"></i>
-                            <button onClick={ this.continue }>Next</button> 
+                            <ContainedButton onClick={ this.continue } 
+                            type="primary" Text="Next" />
                         </div>
                         
                         <h2 className="form_title">Pick a username</h2>
                         <Input labelClass="form_label" label="Username " 
                         inputClass="form_field" inputID="username" type="text" 
-                        name="username" required="false"
-                        value={ this.props.values.username } 
-                        onChange={ this.props.handleChange } />
+                        name="username" value={ username } 
+                        onChange={ handleChange } />
                         <h2>Account privacy</h2>
                         <input type="checkbox" name="profile_private" id="private" 
-                        type="checkbox" value={this.props.values.profile_private} 
-                        onClick={ this.props.handleClick } />
+                        type="checkbox" value={ profile_private } 
+                        onClick={ handleClick } />
                         <p>If you make your account private, your tweetes can 
                             only be seen by your followers, and you will have to 
                             approve their follower request.</p>
@@ -109,14 +121,13 @@ export class FormUserDetails extends Component {
                 )
             case 4: 
                 return (
-                    <div className="third_step_form picture">
+                    <div className="step_form picture">
                         <div className="top-form">
-                            <button onClick={ this.back } 
-                            className="back_landing_page"><i 
-                            className="fa fa-arrow-left" aria-hidden="true"></i>
-                            </button>
+                            <IconButton onClick={ this.back }
+                                iconClass="fa fa-arrow-left" />
                             <i className="fa fa-twitter"></i>
-                            <button onClick={ this.continue }>Next</button>
+                            <ContainedButton onClick={ this.continue }
+                            type="primary" Text="Next" />
                         </div>
 
                         <h2 className="title_form">Pick a profile picture</h2>
@@ -124,7 +135,7 @@ export class FormUserDetails extends Component {
 
                         <div>
                             {
-                                !this.props.values.isUploaded ? (
+                                !isUploaded ? (
                                     <>
                                         <label className="profile_picture_button" 
                                         htmlFor="file_input">
@@ -137,15 +148,15 @@ export class FormUserDetails extends Component {
                                         <input type="file" id="file_input" 
                                         name="profile_picture" width="200" 
                                         height="200" accept="image/*"  
-                                        onChange={ this.props.handleImageChange } />  
+                                        onChange={ handleImageChange } />  
                                     </>
                                 ) : (
                                     <div className="profile_picture_button">
-                                        <img src={ this.props.values.profile_picture } 
+                                        <img src={ profile_picture } 
                                     alt="uploaded_image" id="uploaded_image"/>
                                         <i className="fa fa-times uploaded" 
                                         aria-hidden="true" 
-                                        onClick={ this.props.editProfilePicture }></i>
+                                        onClick={ editProfilePicture }></i>
                                     </div>
                                     
                                 )
@@ -157,14 +168,13 @@ export class FormUserDetails extends Component {
 
             case 5: 
                 return (
-                    <div className="first_step_form">
+                    <div className="step_form">
                         <div className="top-form">
-                            <button onClick={ this.back }
-                                className="back_landing_page"><i
-                                className="fa fa-arrow-left" aria-hidden="true"></i>
-                            </button>
+                            <IconButton onClick={ this.back } 
+                            iconClass="fa fa-arrow-left" />
                             <i className="fa fa-twitter"></i>
-                            <button onClick={ this.continue }>Next</button>
+                            <ContainedButton onClick={this.continue}
+                            Text="Next" type="primary" />
                         </div>
 
                         <h2>Describe yourself</h2>
@@ -174,11 +184,11 @@ export class FormUserDetails extends Component {
                         <div className="container">
                             <textarea name="biography" id="biography"
                             className="form_field bio" cols="90" rows="10"
-                            value={ this.props.values.biography }
-                            onChange={ this.props.handleChange }></textarea>
+                            value={ biography }
+                            onChange={ handleChange }></textarea>
                             <span className="form_label" >Your bio </span>
                             <span className="bio_label">
-                                { this.props.values.bio_characters }/160</span>
+                                { bio_characters }/160</span>
                         </div>
                     </div>
                     

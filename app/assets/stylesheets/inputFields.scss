@@ -44,14 +44,6 @@
     color: #1DA1F2;
 }
 
-.form_label.confirm {
-    position: absolute;
-    top: 3.5px;
-    left: 8px;
-    font-size: 13px;
-    color: gray;
-}
-
 .form_field[value=""] + .form_label{
     top: 12px;
     left: 15px;
@@ -116,4 +108,8 @@ div.container-birthdate{
     margin-left: 55px;
     color: transparent;
     display: none;
+}
+
+textarea {
+    resize: none;
 }
