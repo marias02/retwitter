@@ -1,0 +1,115 @@
+.form_field{
+    width: 90%;
+    padding: 8px;
+    padding-bottom: 4px;
+    padding-top: 16px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    border: 2px solid lightgray;
+    height: 25px;
+    margin-bottom: 20px;
+}
+
+.form_field.bio{
+    height: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form_field:focus{
+    border: none;
+    outline: 2px solid #1DA1F2;
+    height: 25px;
+    padding: 8px;
+    padding-bottom: 4px;
+    padding-top: 16px;
+}
+
+.form_field.bio:focus{
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form_label{
+    position: absolute;
+    top: 3.5px;
+    left: 8px;
+    font-size: 13px;
+    color: gray;
+    pointer-events: none;
+    font-weight: 400;
+}
+
+.form_field:focus + .form_label{
+    color: #1DA1F2;
+}
+
+.form_field[value=""] + .form_label{
+    top: 12px;
+    left: 15px;
+    font-size: 20px;
+    color: gray;
+}
+
+.bio_label{
+    position: absolute;
+    top: 3.5px;
+    right: 45px;
+    font-size: 13px;
+    color: gray;
+    pointer-events: none;
+    font-weight: 400;
+}
+
+div.select-birthdate{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+div.container-birthdate{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    position: relative;
+    border: none;
+}
+
+.container-birthdate.month{
+    width: 40%;
+}
+
+.container-birthdate.day{
+    height: 10%;
+}
+
+.container-birthdate.year{
+    width: 30%;
+}
+
+.container-birthdate > span{
+    font-size: 13px;
+    color: gray;
+    position: absolute;
+    pointer-events: none;
+    top: 3.5px;
+    left: 8px;
+}
+
+.birthdate-selecter{
+    height: 65px;
+    padding: 10px;
+    outline: none;
+    border: 2px solid lightgray;
+}
+
+#file_input{
+    background-color: transparent;
+    margin-left: 55px;
+    color: transparent;
+    display: none;
+}
+
+textarea {
+    resize: none;
+}

@@ -1,0 +1,123 @@
+#profile_image{
+    background-size: 100% 100%;
+    width: 100%;
+}
+
+.prof-img{
+    border-radius: 50%;
+}
+
+div.profile-feed{
+    max-width: 598px;
+}
+
+div.background-profile{
+    min-height: 199.33px;
+    max-height: 199.33px;
+    background-color: rgb(235, 238, 240);
+}
+
+div.profile-picture{
+    max-width: 133px;
+    max-height: 133px;
+    position: absolute;
+    top: 135px;
+    right: 830px;
+}
+
+.prof-img{
+    border: 5px solid white;
+    max-width: 133px;
+    max-height: 133px;
+}
+
+div.top-profile{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.prof-link{
+    margin: 0px 0px 12px 0px;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1DA1F2; 
+    text-decoration: none;
+    border-radius: 1999px;
+    color: #1DA1F2;
+    font-size: 15px;
+    font-weight: bold;
+    width: 125px;
+    height: 38px;
+    box-sizing: border-box;
+}
+
+.prof-link:hover{
+    background-color: #1da0f218;
+}
+
+.prof-link:visited{
+    color: #1DA1F2;
+}
+
+h2.profile-name{
+    margin: 0px;
+}
+
+span.profile-username{
+    margin: 0px;
+    font-size: 15px;
+    font-family: apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #5B7083;
+}
+
+ul.profile-navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    padding: 0px;
+    list-style: none;
+    width: 596px;
+    height: 52px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+div.profile-top-link-cont{
+    min-width: 123px;
+    max-width: 206px;
+    min-height: 26px;
+    height: 52px;
+    padding: 12px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+a.prof-nav-link{
+    min-width: 123px;
+    max-width: 206px;
+    width: auto;
+    height: 52px;
+    padding: 12px 24px;
+    border-bottom: 2px solid rgb(29, 161, 242);
+    font-size: 15px;
+    font-family: apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: bold;
+    color: #5B7083;
+}
+
+a.prof-nav-link:hover{
+    background-color: #1da0f218;
+    color: #1DA1F2;
+}

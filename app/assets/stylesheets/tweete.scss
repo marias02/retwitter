@@ -1,0 +1,54 @@
+li.tweete-container{
+    width: 598px;
+    list-style: none;
+}
+
+div.tweete{
+    padding: 0px 16px 0px 16px;
+    min-height: 98px;
+    width: 598px;
+    border-bottom: 1px solid rgb(235, 238, 240);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: stretch;
+    box-sizing: border-box;
+}
+
+div.tweete-left-side{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 48px;
+    max-width: 48px;
+    margin-right: 12px;
+    padding: 12px 0px 12px 0px
+}
+
+div.tweete-right-side{
+    min-width: 546px;
+    max-width: 546px;
+    box-sizing: border-box;
+    padding: 12px 0px 12px 0px;
+}
+
+b.tweete-name{
+    font-weight: bold;
+}
+
+div.tweete-top{
+    display: flex;
+    justify-content: stretch;
+    margin-bottom: 2px;
+}
+
+div.tweete-content{
+    max-width: 496px;
+    overflow-wrap: break-word;
+}
+
+img.tweete-img{
+    margin-top: 12px;
+    border: 1px solid black;
+    border-radius: 5%;
+}
