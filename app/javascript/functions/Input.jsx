@@ -1,11 +1,36 @@
 import React from "react";
 
-function Input({ label, htmlFor, inputID, name, value, onChange, placeholder, type, required }) {
+function Input({ label, labelClass, inputID, inputClass, name, value, onChange, 
+    type, required, readOnly }) {
     return (
-        <div>
-            <label htmlFor={htmlFor}>{label}</label>
-            <input type={type} id={inputID} name={name} value={value} onChange={ onChange } placeholder={placeholder} required={required} />
-        </div>
+        required === "true" && readOnly === "true" ? (
+            <div className="container">
+                <input type={type} id={inputID} className={inputClass} 
+                name={name} value={value} onChange={ onChange } required={ true } 
+                readOnly={ true } />
+                <span className={labelClass}>{label}</span>
+            </div>
+         ) : required === "true" ? (
+            <div className="container">
+                <input type={type} id={inputID} className={inputClass}
+                    name={name} value={value} onChange={onChange} 
+                    required={ true } />
+                <span className={labelClass}>{label}</span>
+            </div>
+        ) : readOnly === "true" ? (
+            <div className="container">
+                <input type={type} id={inputID} className={inputClass}
+                    name={name} value={value} onChange={onChange} 
+                    readOnly={ true } />
+                <span className={labelClass}>{label}</span>
+            </div>
+        ) : (
+            <div className="container">
+                <input type={type} id={inputID} className={inputClass}
+                    name={name} value={value} onChange={onChange} />
+                <span className={labelClass}>{label}</span>
+            </div>
+        )
     )
 }
 
