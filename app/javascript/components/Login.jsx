@@ -32,21 +32,23 @@ class Login extends Component{
 
     render(){
         return(
-            <div id="login_container">
-                <i className="fa fa-twitter login" />
-                <h2>Log In on Retwitter</h2>
-                <Input label="Username" labelClass="form_label" 
-                inputID="username" inputClass="form_field" name="username" 
-                value={ this.state.username } onChange={ this.onChangeInput }
-                type="text" required="true" style="login" />
-                <Input label="Password" labelClass="form_label"
-                inputID="password" inputClass="form_field" name="password_digest" 
-                onChange={ this.onChangeInput } type="password" required="true"
-                value={ this.state.password_digest } style="login" />
-                <ContainedButton className="login_submit" type="primary" 
-                Text="Log In" onClick={ this.handleSubmit } />
-                <br/>
-                <Link to="/signup">Sign Up on Retwitter</Link>
+            <div className="form">
+                <div className="step_form">
+                    <i className="fa fa-twitter login" />
+                    <h2>Log In on Retwitter</h2>
+                    <Input label="Phone, email, or username" 
+                    labelClass="form_label" inputID="username" 
+                    inputClass="form_field" name="username" 
+                    value={ this.state.username } onChange={ this.onChangeInput }
+                    type="text" required="true" style="login" />
+                    <Input label="Password" labelClass="form_label"
+                    inputID="password" inputClass="form_field" name="password_digest" 
+                    onChange={ this.onChangeInput } type="password" required="true"
+                    value={ this.state.password_digest } style="login" />
+                    <ContainedButton className="confirm" type="primary" 
+                    Text="Log In" onClick={ this.handleSubmit } />
+                </div>
+                
             </div>
         )
     }

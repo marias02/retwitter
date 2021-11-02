@@ -49,12 +49,11 @@ class Tweets extends Component {
         ));
 
 
-        const username = this.props.location.state.cur_usr_username;
+        // const username = this.props.location.state.cur_usr_username;
+        const username = "User123"
 
         return (
             <div className="feed">
-                <h1>Good to see you again... {username}</h1>
-                <UserBox username={username} />
                 <div className="sticky-home-container">
                     <div className="home-title-container">
                         <span className="home-title">Home</span>
