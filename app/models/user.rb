@@ -109,8 +109,8 @@ class User < ApplicationRecord
     def follow(user)
         @user = User.find(user.id)
 
-        if @user && !following.include?(user) && !FriendshipRequest.find_by(requested_id: user.id)
-            if @user.private
+        if @user && !following.include?(user)
+            if @user.private && !FriendshipRequest.find_by(requested_id: user.id)
               active_friendships_requests.create(requested_id: user.id)
             else
               active_friendships.create(followed_id: user.id)

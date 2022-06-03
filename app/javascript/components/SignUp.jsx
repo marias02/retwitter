@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { signUpUser } from "../functions/ApiUtils";
 import FormUserDetails from './FormUserDetails'
 import Confirm from './Confirm'
+import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
+import { createUser } from "../redux/actions/auth_actions";
 
 class SignUp extends Component {
 
@@ -18,10 +20,11 @@ class SignUp extends Component {
             password_digest: '',
             username: '',
             private: false,
-            profile_picture: '',
+            profile_picture: null,
             isUploaded: false,
             biography: '',
-            bio_characters: 0
+            bio_characters: 0, 
+            errorMessages: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeBirthdateOption = this.onChangeBirthdateOption.bind(this);
@@ -54,17 +57,16 @@ class SignUp extends Component {
         this.setState({ [name]: value });
     }
 
-    async handleSubmit(e){
+    handleSubmit = async (e) => {
         e.preventDefault();
-
-        await signUpUser({
-            name: this.state.name, phone: this.state.phone,
-            email: this.state.email,
-            birthdate: `${this.state.month} ${this.state.day} ${this.state.year}`,
-            password_digest: this.state.password_digest,
-            username: this.state.username, private: this.state.private,
-            profile_picture: this.state.profile_picture,
-            biography: this.state.biography
+        const { 
+            name, phone, email, password_digest, username, profile_picture,
+            biography, day, month, year
+        } = this.state;
+        const { newUser, user } = this.props;
+        await newUser({
+            name, phone, email, password_digest, username, profile_picture,
+            biography, birthdate: `${month} ${day} ${year}`
         })
     };
 
@@ -218,10 +220,19 @@ class SignUp extends Component {
                             values={ values_one }
                             handleSubmit={ this.handleSubmit }
                         />
+                        {this.props.user.isLoggedIn ? <Redirect to="/home" redirect="true" /> : null}
                     </div>
                 )
         }
     }
 }
 
-export default SignUp;
+const mapStateToProps = state => ({
+    user: state.auth,
+});
+
+const mapDispatchToProps = dispatch => ({
+    newUser: estate => dispatch(createUser(estate)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

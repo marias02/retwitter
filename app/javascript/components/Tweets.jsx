@@ -1,31 +1,23 @@
 import React, { Component } from "react";
-import UserBox from "../components/UserBox";
-import Link from "react-router-dom";
+import { getLatestTweetes } from "../redux/actions/tweetes_actions";
+import { connect } from "react-redux";
 
 class Tweets extends Component {
     constructor(props) {
         super(props);
         this.state = {
             tweetes: []
-        };
+        }
     }
 
-    componentDidMount() {
-        const url = '/tweetes/index';
-        fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(response => this.setState({ tweetes: response }))
-            .catch(() => this.props.history.push("/"));
+    async componentDidMount () {
+        const { downloadTweetes } = this.props
+        await downloadTweetes();
     }
 
     render() {
-        const { tweetes } = this.state;
-        const allTweetes = tweetes.map((tweete, index) => (
+        const { tweetes } = this.props.tweetes;
+        const allTweetes = tweetes.map((tweete) => (
             <li key={tweete.id} className="tweete-container">
                 <div className="tweete">
                     <div className="tweete-left-side">
@@ -46,15 +38,11 @@ class Tweets extends Component {
                     </div>
                 </div>
             </li>
-        ));
-
-
-        const username = this.props.location.state.cur_usr_username;
+        ))
 
         return (
             <div className="feed">
-                <h1>Good to see you again... {username}</h1>
-                <UserBox username={username} />
+                <h1>Good to see you again... </h1>
                 <div className="sticky-home-container">
                     <div className="home-title-container">
                         <span className="home-title">Home</span>
@@ -69,11 +57,19 @@ class Tweets extends Component {
                 </div>
                 <div className="usefulness"></div>
                 <ul className="feed-list">
-                    {allTweetes} 
-                </ul>
+                    { allTweetes }
+                </ul> 
             </div>
         );
     }
 }
 
-export default Tweets;
+const mapStateToProps = state => ({
+    tweetes: state.latestTweetes,
+});
+
+const mapDispatchToProps = dispatch => ({
+    downloadTweetes: () => dispatch(getLatestTweetes()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tweets);

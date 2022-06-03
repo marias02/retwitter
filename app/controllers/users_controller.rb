@@ -58,8 +58,10 @@ class UsersController < ApplicationController
     if @user.save
         session[:user_id] = @user.id
         user = @user
+        render json: { "user": { "id": @user.id, "username": @user.username } }
     else
         user = @user
+        puts user.errors.full_messages
         flash[:error] = user.errors.full_messages
     end
   end

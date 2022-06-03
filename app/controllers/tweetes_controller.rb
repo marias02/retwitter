@@ -1,7 +1,19 @@
 class TweetesController < ApplicationController
-    def index
-        tweetes = Tweete.all.order(created_at: :desc)
-        render json: tweetes
+    def following_latest_tweetes
+        @current_user = User.find(session[:user_id])
+        tweetes_following_user_id = []
+
+        ordered_tweetes = Tweete.all.order(created_at: :desc)
+
+        ordered_tweetes.each do |i|
+            @current_user.following.each do |following|
+                if following.id == i.user_id 
+                    tweetes_following_user_id.push(i)
+                end
+            end
+        end
+
+        render json: tweetes_following_user_id
     end
 
     def new

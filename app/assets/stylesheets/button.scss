@@ -1,41 +1,24 @@
-.contained_button, .outlined_button {
+button, .button{
+    background-color: #1DA1F2;
+    color: white;
+    width: 55px;
     border-radius: 9999px;
-    padding: 1.5% 3.5%;
+    padding: 10px 32px;
+    border: 0;
+    display: flex;
     font-weight: 550;
     font-size: 15px;
+    justify-content: center;
     cursor: pointer;
 }
 
-.contained_button {
-    background-color: #1DA1F2;
-    color: white;
-    border: 0;
-}
-
-.outlined_button {
-    background-color: white;
-    color: #1DA1F2;
-    border: 1px solid #1DA1F2;
-}
-
-#sign_up_landing_page{
-    margin-bottom: 20px;
-}
-
-#sign_up_landing_page, #login_landing_page{
-    width: 50%;
-    height: 45px;
-    font-size: 16px;
-}
-
-.contained_button.confirm_next{
+#next_confirm_button{
     visibility: hidden;
 }
 
-.contained_button.confirm{
+#confirm_button{
     width: 90%;
     display: flex;
-    justify-content: center;
     margin-left: 30px;
 }
 
@@ -69,6 +52,8 @@ button.like:hover, button.dislike:hover{
     color: red;
     border-radius: 50%;
     background-color: rgba(255, 0, 0, 0.123);
+    min-width: 25px;
+    min-height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,6 +79,8 @@ button.retweet:hover, button.unretweete:hover{
     background-color: rgba(0, 128, 0, 0.123);
     color: green;
     border-radius: 50%;
+    min-width: 25px;
+    min-height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,32 +128,10 @@ div.tweet-toolb-but a{
 
 div.tweet-toolb-but a:hover{
     background-color: #038fe6;
+    color: white;
+    border-radius: 9999px;
 }
 
-.icon_button{
-    color: #1DA1F2;
-    background-color: white;
-    font-size: 20px;
-    display: flex; 
-    align-items: center;
-    width: 6.5%;
-    border: none;
-    border-radius: 50%;
-    justify-content: center;
-}
-
-.icon_button.first{
-    visibility: hidden;
-}
-
-.icon_button:hover{
-    cursor: pointer;
-    background-color: #038fe628;
-}
-
-.contained_button.login_submit{
-    width: 100%;
-    margin: 10px 0px 25px 0px;
-    height: 50px;
-    font-size: 17px;
+textarea {
+    resize: none;
 }

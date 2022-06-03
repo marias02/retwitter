@@ -1,18 +1,25 @@
 import React, { Component } from "react";
-import Input from '../functions/Input';
-import ContainedButton from '../functions/ContainedButton'
-import { loginUser } from '../functions/ApiUtils';
-import { Link } from 'react-router-dom';
+import Input from '../../functions/Input';
+import ContainedButton from '../../functions/ContainedButton'
+import { Link, Redirect } from 'react-router-dom';
+import { loginUserPage } from "../../redux/actions/auth_actions";
+import { connect } from "react-redux";
 
 class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
             username: '',
-            password_digest: ''
+            password_digest: '',
+            failedLogin: false
         };
         this.onChangeInput = this.onChangeInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFailedLogin = this.handleFailedLogin.bind(this);
+    }
+
+    handleFailedLogin(boolean){
+        this.setState({ failedLogin: boolean})
     }
 
     onChangeInput(e){
@@ -21,18 +28,18 @@ class Login extends Component{
         this.setState({[name]: value});
     }
 
-    async handleSubmit(e){
+    handleSubmit = async(e) => {
         e.preventDefault();
+        const { username, password_digest } = this.state;
+        const { logginUser, user } = this.props;
 
-        await loginUser({
-            username: this.state.username,
-            password_digest: this.state.password_digest
-        })
+        await logginUser({ username, password_digest });
     }
 
     render(){
         return(
             <div id="login_container">
+                {this.props.user.isLoggedIn ? <Redirect to="/home" redirect="true" /> : null }
                 <i className="fa fa-twitter login" />
                 <h2>Log In on Retwitter</h2>
                 <Input label="Username" labelClass="form_label" 
@@ -52,4 +59,12 @@ class Login extends Component{
     }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    user: state.login,
+});
+
+const mapDispatchToProps = dispatch => ({
+    logginUser: estate => dispatch(loginUserPage(estate))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
