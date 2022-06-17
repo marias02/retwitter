@@ -63,7 +63,7 @@ class SignUp extends Component {
             name, phone, email, password_digest, username, profile_picture,
             biography, day, month, year
         } = this.state;
-        const { newUser, user } = this.props;
+        const { newUser } = this.props;
         await newUser({
             name, phone, email, password_digest, username, profile_picture,
             biography, birthdate: `${month} ${day} ${year}`

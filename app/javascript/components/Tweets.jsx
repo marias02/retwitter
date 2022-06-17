@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { getLatestTweetes } from "../redux/actions/tweetes_actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom"
+import NewTweete from "../components/NewTweete";
 
 class Tweets extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tweetes: []
-        }
     }
 
     async componentDidMount () {
@@ -18,7 +17,8 @@ class Tweets extends Component {
     render() {
         const { tweetes } = this.props.tweetes;
         const allTweetes = tweetes.map((tweete) => (
-            <li key={tweete.id} className="tweete-container">
+            <Link to={"/tweetes/" + tweete.id} id={tweete.id}>
+              <li key={tweete.id} className="tweete-container">
                 <div className="tweete">
                     <div className="tweete-left-side">
                         <div className="prof-cont">
@@ -28,7 +28,7 @@ class Tweets extends Component {
                             <div className="top-tweete">
                             </div>
                             <div className="tweete-content">
-                                <span>{tweete.tweete}</span>
+                                <span>{tweete.text}</span>
                                 <p>image if any</p>
                             </div>
                             <div className="button-tools">
@@ -38,6 +38,8 @@ class Tweets extends Component {
                     </div>
                 </div>
             </li>
+          </Link>
+            
         ))
 
         return (
@@ -54,6 +56,7 @@ class Tweets extends Component {
                     </div>
                 </div>
                 <div className="new-tweete-box">
+                    <NewTweete />
                 </div>
                 <div className="usefulness"></div>
                 <ul className="feed-list">

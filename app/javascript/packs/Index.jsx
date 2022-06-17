@@ -35,6 +35,19 @@ const initialState = {
   latestTweetes: {
     tweetesDownloaded: false,
     tweetes: []
+  }, 
+  tweeteShow: {
+    tweeteDownloaded: false,
+    tweete: {}
+  },
+  tweeteNew: {
+    newTweete: {
+      text: ''
+    },
+    tweeteCreated: false
+  },
+  tweeteDel: {
+    tweeteDeleted: false
   }
 }
 

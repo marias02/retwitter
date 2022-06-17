@@ -16,4 +16,68 @@ const latestTweetesReducer = ( state = initialState, action ) => {
     }
 }
 
-export default latestTweetesReducer;
+export { latestTweetesReducer };
+
+const initialTweeteState = {
+    tweeteDownloaded: false,
+    tweete: {}
+};
+
+const tweeteReducer = (state = initialTweeteState, action) => {
+    switch (action.type) {
+        case "GET_TWEETE": return {
+            tweeteDownloaded: true,
+            tweete: action.payload,
+        };
+        case "GET_TWEETE_ERROR": return {
+            tweeteDownloaded: false
+        };
+        default: return state
+    }
+}
+
+export { tweeteReducer };
+
+const initialNewTweeteState = {
+    newTweete: {
+        text: ''
+    },
+    tweeteCreated: false
+};
+
+const newTweeteReducer = (state = initialNewTweeteState, action) => {
+    switch (action.type) {
+        case "CREATE_TWEETE": return {
+            ...state,
+            newTweete: { 
+                text: action.text
+            },
+            tweeteCreated: true
+        };
+        case "CREATE_TWEETE_ERROR": return {
+            tweeteCreated: false
+        };
+        default: return state
+    }
+}
+
+export { newTweeteReducer };
+
+const initialdelTweeteState = {
+    tweeteDeleted: false 
+}
+
+const deleteTweeteReducer = (state = initialdelTweeteState, action) => {
+    switch (action.type) {
+        case "DELETE_TWEETE": return {
+            ...state,
+            tweeteDeleted: true
+        };
+        case "DELETE_TWEETE_ERROR": return {
+            tweeteDeleted: false
+        };
+        default: return state
+    }
+}
+
+export { deleteTweeteReducer };

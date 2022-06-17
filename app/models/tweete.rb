@@ -3,7 +3,7 @@ class Tweete < ApplicationRecord
     belongs_to :user
     has_many :comments, dependent: :destroy
     has_many :users, through: :comments
-    validates :tweete, presence: true, length: { maximum: 280 }
+    validates :text, presence: true, length: { maximum: 280 }
 
     # Uncomment when you make the appropiate tests for them!
     has_many :likers, class_name: "Like", foreign_key: "liked_id", 

@@ -5,6 +5,7 @@ import SignUp from '../components/SignUp';
 import Login from '../components/login/login';
 import Logout from '../components/UserBox';
 import Tweets from '../components/Tweets';
+import Tweete from '../components/Tweete';
 
 export default (
     <Router>
@@ -14,6 +15,7 @@ export default (
             <Route exact path="/login" component={Login} />
             <Route exact path="/login" component={Logout} />
             <Route exact path="/home" component={Tweets} />
+            <Route exact path="/tweetes/:id" component={Tweete} />
         </Switch>
     </Router>
 );

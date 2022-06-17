@@ -112,7 +112,7 @@ export class FormUserDetails extends Component {
                         onChange={ handleChange } />
                         <h2>Account privacy</h2>
                         <input type="checkbox" name="profile_private" id="private" 
-                        type="checkbox" value={ profile_private } 
+                        value={ profile_private } 
                         onClick={ handleClick } />
                         <p>If you make your account private, your tweetes can 
                             only be seen by your followers, and you will have to 
