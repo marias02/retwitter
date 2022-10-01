@@ -40,7 +40,8 @@ export { tweeteReducer };
 
 const initialNewTweeteState = {
     newTweete: {
-        text: ''
+        text: '',
+        media: null
     },
     tweeteCreated: false
 };
@@ -50,7 +51,8 @@ const newTweeteReducer = (state = initialNewTweeteState, action) => {
         case "CREATE_TWEETE": return {
             ...state,
             newTweete: { 
-                text: action.text
+                text: action.text,
+                media: action.media
             },
             tweeteCreated: true
         };

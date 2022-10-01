@@ -154,6 +154,10 @@ class User < ApplicationRecord
         self.email === nil || self.email === ""
     end
 
+    def like(tweete)
+        liked_tweetes.create(liked_id: tweete.id)
+    end
+
     def liked?(tweete)
         liked_tweetes.find_by(liked_id: tweete.id)
     end

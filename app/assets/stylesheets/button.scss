@@ -67,7 +67,7 @@ button.dislike{
     min-height: 25px;
 }
 
-button.retweet{
+button.retweet, button.comment, button.share{
     background-color: transparent;
     border: none;
     color: gray;

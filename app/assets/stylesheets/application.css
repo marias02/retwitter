@@ -189,3 +189,37 @@ div.container{
 #confirm_p{
     margin-top: 80px;
 }
+
+.home-division{
+    display: flex;
+    justify-content: center;
+}
+
+#new_tweet_textarea{
+    border: none;
+}
+
+div.new_tweete_container.top, div.new_tweete_container.bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+div.new_tweete_container.bottom{
+    justify-content: space-between;
+}
+
+div.buttons_container{
+    display: flex;
+    flex-direction: row;
+}
+
+button.new_tweete_icons{
+    background-color: transparent;
+    color: #1DA1F2;
+    padding: 10px 0px;
+    width: 30px;
+}
+
+a{
+    text-decoration: none;
+}

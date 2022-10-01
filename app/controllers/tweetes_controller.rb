@@ -55,6 +55,6 @@ class TweetesController < ApplicationController
     private 
 
         def tweete_params
-            params.require(:tweete).permit(:text, :id)
+            params.permit(:text, :id, :media)
         end
 end

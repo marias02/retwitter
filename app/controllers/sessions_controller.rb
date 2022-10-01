@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
 
     def create 
         @user = User.find_by(username: params[:session][:username].downcase)
+        print "this does not exist"
+        print @user
         if @user && @user.authenticate(params[:session][:password_digest])
             session[:user_id] = @user.id
             render json: :no_content

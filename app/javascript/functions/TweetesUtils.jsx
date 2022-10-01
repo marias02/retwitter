@@ -16,13 +16,12 @@ async function getTweete(id) {
 export { getTweete }
 
 const submitNewTweete = tweete => {
+    const formData = new FormData();
+    formData.append("text", tweete.text)
+    formData.append("media", tweete.media)
     fetch('/tweetes/new', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
         method: "POST",
-        body: JSON.stringify(tweete)
+        body: formData
     }).then(response => {
         response.json();
     });

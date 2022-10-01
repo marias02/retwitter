@@ -42,7 +42,8 @@ const initialState = {
   },
   tweeteNew: {
     newTweete: {
-      text: ''
+      text: '',
+      media: null
     },
     tweeteCreated: false
   },

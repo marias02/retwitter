@@ -1,9 +1,13 @@
 class Tweete < ApplicationRecord
-    has_one_attached :image
+    has_one_attached :media
     belongs_to :user
-    has_many :comments, dependent: :destroy
-    has_many :users, through: :comments
+    
     validates :text, presence: true, length: { maximum: 280 }
+
+    has_many :comments, class_name: "Comment", foreign_key: "tweete_id",
+    dependent: :destroy
+
+    has_many :commenters, through: :comments, source: :tweete
 
     # Uncomment when you make the appropiate tests for them!
     has_many :likers, class_name: "Like", foreign_key: "liked_id", 
@@ -19,16 +23,16 @@ class Tweete < ApplicationRecord
     has_many :bookmarked, class_name: "Bookmark", foreign_key: "bookmarked_id",
     dependent: :destroy
 
-    def comment(user_id, content)
-        if User.find(user_id)
-            Comment.create(user_id: user_id, tweete_id: self.id, comment: content)
-        end
-    end
+    # def comment(user_id, content)
+    #     if User.find(user_id)
+    #         Comment.create(user_id: user_id, tweete_id: self.id, comment: content)
+    #     end
+    # end
 
-    def remove_comment(comment_id)
-        if Comment.find(comment_id)
-            Comment.find(comment_id).destroy
-        end
-    end
+    # def remove_comment(comment_id)
+    #     if Comment.find(comment_id)
+    #         Comment.find(comment_id).destroy
+    #     end
+    # end
 end
 
