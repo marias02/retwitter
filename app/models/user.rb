@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validate :email_valid?
     validates :phone, presence: true, if: :email_presence, exclusion: { in: [""] }, 
     format: { without: /\s+/, message: "can't have spaces" }
-    has_one_attached :profile_picture
+    has_one_attached :profile
     has_many :tweetes, dependent: :destroy
     has_many :comments, through: :tweetes
     
@@ -154,12 +154,16 @@ class User < ApplicationRecord
         self.email === nil || self.email === ""
     end
 
-    def like(tweete)
-        liked_tweetes.create(liked_id: tweete.id)
+    def like(id)
+        liked_tweetes.create(liked_id: id)
     end
 
-    def liked?(tweete)
-        liked_tweetes.find_by(liked_id: tweete.id)
+    def liked?(id)
+        liked_tweetes.find_by(liked_id: id)
+    end
+
+    def retweet(id)
+        tweetes_retweeted.create(retweeted_id: id)
     end
 
     def retweeted?(tweete)

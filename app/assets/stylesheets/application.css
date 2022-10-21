@@ -223,3 +223,8 @@ button.new_tweete_icons{
 a{
     text-decoration: none;
 }
+
+#current_user{
+    display: flex;
+    flex-direction: column;
+}

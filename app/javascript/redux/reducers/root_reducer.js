@@ -1,14 +1,13 @@
 import { combineReducers } from "redux";
 import loginReducer from "./login_reducer";
 import authReducer from "./auth_reducer";
-import { latestTweetesReducer, tweeteReducer, newTweeteReducer, deleteTweeteReducer } from "./tweetes_reducer";
+import tweetsSlice from "../../slices/tweetsSlice";
+import usersSlice from "../../slices/usersSlice";
 
 const rootReducer = combineReducers({ login: loginReducer, 
                                     auth: authReducer,
-                                    latestTweetes: latestTweetesReducer,
-                                    tweeteShow: tweeteReducer,
-                                    tweeteNew: newTweeteReducer,
-                                    tweeteDel: deleteTweeteReducer
+                                    users: usersSlice.reducer,
+                                    latestTweetes: tweetsSlice.reducer
                                 })
 
 export default rootReducer;

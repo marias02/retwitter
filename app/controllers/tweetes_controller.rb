@@ -12,15 +12,9 @@ class TweetesController < ApplicationController
 
         user_ids.push(@current_user.id)
 
-        ordered_tweetes = Tweete.where(user_id: user_ids).order(created_at: :desc)
-        
-        tweetes = []
+        ordered_tweetes = Tweete.where(user_id: user_ids).order(created_at: :desc).with_attached_media
 
-        ordered_tweetes.each do |tweete|
-            tweetes.push(tweete)
-        end
-
-        render json: tweetes
+        render json: ordered_tweetes.as_json(methods: :media_url)
     end
 
     def new
@@ -38,7 +32,7 @@ class TweetesController < ApplicationController
         @user = User.find(session[:user_id])
         @tweete = @user.tweetes.new(tweete_params)
         if @tweete.save
-            render json: { tweet: @tweete, errors: nil }
+            render json: { tweet: @tweete.as_json(methods: :media_url), errors: nil }
         else
             render json: { tweet: nil, errors: tweete.errors.full_messages} 
         end

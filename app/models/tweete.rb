@@ -23,16 +23,19 @@ class Tweete < ApplicationRecord
     has_many :bookmarked, class_name: "Bookmark", foreign_key: "bookmarked_id",
     dependent: :destroy
 
-    # def comment(user_id, content)
-    #     if User.find(user_id)
-    #         Comment.create(user_id: user_id, tweete_id: self.id, comment: content)
-    #     end
-    # end
+    def media_url
+        if self.media.attached? != false
+            Rails.application.routes.url_helpers.url_for(self.media)
+            return self.media.service_url
+        end
+    end
 
-    # def remove_comment(comment_id)
-    #     if Comment.find(comment_id)
-    #         Comment.find(comment_id).destroy
-    #     end
-    # end
+    def as_json(options = {})
+        super(options).merge({
+            "likes" => self.likes,
+            "retweets" => self.retweetes,
+            "comments" => self.comments
+        })
+    end
 end
 

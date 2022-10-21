@@ -1,51 +1,23 @@
 import React, { Component } from "react";
-import { getLatestTweetes } from "../redux/actions/tweetes_actions";
+import { onTweeteLike } from "../redux/actions/interaction_actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom"
 import NewTweete from "../components/NewTweete";
 import Navbar from "./Navbar";
-import IconLabelButton from "../functions/IconLabelButton";
-import IconButton from "../functions/IconButton";
+import { TweetsList } from "../functions/AllTweets";
 
 class Tweets extends Component {
     constructor(props) {
         super(props);
+
+        this.onLike = this.onLike.bind(this);
     }
 
-    async componentDidMount () {
-        const { downloadTweetes } = this.props
-        await downloadTweetes();
+    onLike = async (id) => {
+        const { tweeteLike } = this.props;
+        await tweeteLike(id);
     }
 
     render() {
-        const { tweetes } = this.props.tweetes;
-        const allTweetes = tweetes.map((tweete) => (
-            <Link to={"/tweetes/" + tweete.id} id={tweete.id}>
-              <li key={tweete.id} className="tweete-container">
-                <div className="tweete">
-                    <div className="tweete-left-side">
-                        <img className="prof-cont" src={"https://images.pexels.com/photos/354951/pexels-photo-354951.jpeg?cs=srgb&dl=pexels-pixabay-354951.jpg&fm=jpg"} />
-                    </div>
-                    <div className="tweete-right-side">
-                        <div className="top-tweete">
-                            <span>username</span>
-                        </div>
-                        <div className="tweete-content">
-                            <span>{tweete.text}</span>
-                            {tweete.media != null ? <img className="tweete_media" src={"https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1555285106/shape/mentalfloss/chinchilla_cat_5833713404_1.jpg?itok=vkNCc-u9"} /> : <></>}
-                        </div>
-                        <div className="button-tools">
-                            <IconLabelButton type="primary" Text={0} className="comment" iconClass="fa fa-comment-o" />
-                            <IconLabelButton type="primary" Text={0} className="retweet" iconClass="fa fa-retweet" />
-                            <IconLabelButton type="primary" Text={0} className="like" iconClass="fa fa-heart-o" />
-                            <IconButton buttonClass="share" iconClass="fa fa-upload" />
-                        </div>
-                    </div>
-                </div>
-            </li>
-          </Link>
-            
-        ))
 
         return (
             <div className="home-division">
@@ -66,7 +38,7 @@ class Tweets extends Component {
                     </div>
                     <div className="usefulness"></div>
                     <ul className="feed-list">
-                        { allTweetes }
+                        <TweetsList />
                     </ul> 
                 </div>
             </div>
@@ -79,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    downloadTweetes: () => dispatch(getLatestTweetes()),
+    tweeteLike: (id) => dispatch(onTweeteLike(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tweets);

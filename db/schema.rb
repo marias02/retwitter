@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_10_105126) do
+ActiveRecord::Schema.define(version: 2022_10_20_070456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2022_06_10_105126) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["liked_id", "liker_id"], name: "index_likes_on_liked_id_and_liker_id", unique: true
-    t.index ["liked_id"], name: "index_likes_on_liked_id", unique: true
-    t.index ["liker_id"], name: "index_likes_on_liker_id", unique: true
+    t.index ["liked_id"], name: "index_likes_on_liked_id"
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
   create_table "lists", force: :cascade do |t|

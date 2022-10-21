@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { createTweete } from "../redux/actions/tweetes_actions";
 import IconButton from "../functions/IconButton"
+import { addNewTweet } from "../slices/tweetsSlice";
 
 class NewTweete extends Component {
     constructor(props) {
@@ -10,7 +9,7 @@ class NewTweete extends Component {
         this.state = {
             text: '',
             tweeteCharacters: 0,
-            media: null
+            media: null,
         }
         this.onChangeInput = this.onChangeInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +17,7 @@ class NewTweete extends Component {
     }
 
     onImageChange(e){
-        this.setState({ media: e.target.files[0]})
+        this.setState({ media: e.target.files[0] })
     }
 
     onChangeInput(e) {
@@ -35,9 +34,13 @@ class NewTweete extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        const { newTweete, tweeteText } = this.props;
         const { text, media } = this.state;
-        await newTweete({text, media})
+        const { addNewTweet } = this.props;
+        addNewTweet({ text, media })
+        this.setState({
+            text: '',
+            media: null
+        })
     }
 
     render() {
@@ -72,7 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    newTweete: (estate) => dispatch(createTweete(estate)),
-});
+    addNewTweet: (tweete) => dispatch(addNewTweet(tweete))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTweete);

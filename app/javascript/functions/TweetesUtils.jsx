@@ -15,16 +15,18 @@ async function getTweete(id) {
 
 export { getTweete }
 
-const submitNewTweete = tweete => {
+async function submitNewTweete(tweete) {
     const formData = new FormData();
     formData.append("text", tweete.text)
-    formData.append("media", tweete.media)
-    fetch('/tweetes/new', {
+    if (tweete.media != null) {
+       formData.append("media", tweete.media) 
+    }
+    const response_pending = await fetch('/tweetes/new', {
         method: "POST",
         body: formData
-    }).then(response => {
-        response.json();
-    });
+    })
+    const response = await response_pending.json();
+    return response;
 }
 
 export { submitNewTweete }

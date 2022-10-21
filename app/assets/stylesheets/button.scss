@@ -75,7 +75,7 @@ button.retweet, button.comment, button.share{
     min-height: 25px;
 }
 
-button.retweet:hover, button.unretweete:hover{
+button.retweet:hover, button.unretweet:hover{
     background-color: rgba(0, 128, 0, 0.123);
     color: green;
     border-radius: 50%;
@@ -86,7 +86,7 @@ button.retweet:hover, button.unretweete:hover{
     justify-content: center;
 }
 
-button.unretweete{
+button.unretweet{
     background-color: transparent;
     color: green;
     border: none;

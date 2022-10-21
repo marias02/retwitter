@@ -6,53 +6,20 @@ import React from 'react';
 import { render } from "react-dom";
 import App from '../components/App';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
 import rootReducer from '../redux/reducers/root_reducer';
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { TweetAuthor } from '../functions/AllTweets';
+import { fetchUsers } from '../slices/usersSlice';
 
-const initialState = {
-  auth: {
-    isLoggedIn: false,
-    authUser: {
-      name: '',
-      phone: '',
-      email: '',
-      password_digest: '',
-      username: '',
-      profile_picture: '',
-      biography: '',
-      birthdate: ``
-    }
-  }, 
-  login: {
-    isLoggedIn: false,
-    logginUser: {
-      username: '',
-      password_digest: ''
-    }
-  },
-  latestTweetes: {
-    tweetesDownloaded: false,
-    tweetes: []
-  }, 
-  tweeteShow: {
-    tweeteDownloaded: false,
-    tweete: {}
-  },
-  tweeteNew: {
-    newTweete: {
-      text: '',
-      media: null
-    },
-    tweeteCreated: false
-  },
-  tweeteDel: {
-    tweeteDeleted: false
-  }
-}
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => 
+  getDefaultMiddleware({
+    serializableCheck: false
+  })
+});
 
-const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
+store.dispatch(fetchUsers())
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
