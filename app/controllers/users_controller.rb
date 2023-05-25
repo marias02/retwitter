@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    render json: @users
   end
 
   # GET /users/1
@@ -58,8 +59,10 @@ class UsersController < ApplicationController
     if @user.save
         session[:user_id] = @user.id
         user = @user
+        render json: { "user": { "id": @user.id, "username": @user.username } }
     else
         user = @user
+        puts user.errors.full_messages
         flash[:error] = user.errors.full_messages
     end
   end
@@ -86,11 +89,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def likes
-    if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      @likes = @user.liked
-    end
+  def like
+      @current_user = User.find_by(id: session[:user_id])
+      @tweete = Tweete.find_by(id: params[:id])
+      if @tweete && @current_user
+          @current_user.like(@tweete.id)
+          render json: { tweet: @tweete, user: @current_user }
+      end
+  end
+
+  def retweet
+      @current_user = User.find_by(id: session[:user_id])
+      @tweete = Tweete.find_by(id: params[:id])
+      if @tweete && @current_user
+          @current_user.retweet(@tweete.id)
+          render json: { tweet: @tweete, user: @current_user }
+      end
   end
 
   def bookmarks
@@ -141,7 +155,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :phone, :email, :birthdate, 
+      params.require(:user).permit(:id, :name, :phone, :email, :birthdate, 
       :password_digest, :profile_picture, :username, :private, :biography)
     end
 end

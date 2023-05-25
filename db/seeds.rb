@@ -12,21 +12,21 @@ end
 
 2.times do |i|
     Tweete.create(
-        tweete: "This is a test, trying to deploy by the #{i + 1} time",
+        text: "This is a test, trying to deploy by the #{i + 1} time",
         user_id: 1
     )
 end
 
 2.times do |i|
     Tweete.create(
-        tweete: "This should look good by the #{i + 1} time",
+        text: "This should look good by the #{i + 1} time",
         user_id: 2
     )
 end
 
 2.times do |i|
     Tweete.create(
-        tweete: "What about by the #{i + 1} time",
+        text: "What about by the #{i + 1} time",
         user_id: 3
     )
 end

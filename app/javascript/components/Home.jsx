@@ -20,7 +20,7 @@ export default () => (
             </div>
         </div>
         <div className="footer">
-            <p className="footer_landing_page">Retwitter by Maria Arias 2021. Inspired by Twitter. Connect with me on Github.</p>
+            <p className="footer_landing_page">Retwitter by Maria Arias Miranda 2022. Inspired by Twitter. Connect with me on <a href="https://github.com/marias02">Github</a>.</p>
         </div>
     </div>
 );

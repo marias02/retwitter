@@ -163,7 +163,7 @@ div.container{
     margin-left: 30px;
 }
 
-h2, h4, p{
+.step_form > h2, h4, p{
     margin-left: 30px;
     margin-right: 30px;
 }
@@ -188,4 +188,50 @@ h2, h4, p{
 
 #confirm_p{
     margin-top: 80px;
+}
+
+.home-division{
+    display: flex;
+    justify-content: center;
+}
+
+#new_tweet_textarea{
+    border: none;
+}
+
+div.new_tweete_container.top, div.new_tweete_container.bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+div.new_tweete_container.bottom{
+    justify-content: space-between;
+}
+
+div.buttons_container{
+    display: flex;
+    flex-direction: row;
+}
+
+button.new_tweete_icons{
+    background-color: transparent;
+    color: #1DA1F2;
+    padding: 10px 0px;
+    width: 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#current_user{
+    display: flex;
+    flex-direction: column;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    padding-right: 20px;
 }

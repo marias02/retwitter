@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_10_28_132234) do
-=======
-ActiveRecord::Schema.define(version: 2021_07_08_200048) do
->>>>>>> 706482d32e735cf040b39b601681d4eeed6500ec
+ActiveRecord::Schema.define(version: 2022_10_20_070456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,9 +71,9 @@ ActiveRecord::Schema.define(version: 2021_07_08_200048) do
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followed_id"], name: "index_friendships_on_followed_id", unique: true
+    t.index ["followed_id"], name: "index_friendships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_friendships_on_follower_id", unique: true
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -86,8 +82,8 @@ ActiveRecord::Schema.define(version: 2021_07_08_200048) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["liked_id", "liker_id"], name: "index_likes_on_liked_id_and_liker_id", unique: true
-    t.index ["liked_id"], name: "index_likes_on_liked_id", unique: true
-    t.index ["liker_id"], name: "index_likes_on_liker_id", unique: true
+    t.index ["liked_id"], name: "index_likes_on_liked_id"
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -128,9 +124,10 @@ ActiveRecord::Schema.define(version: 2021_07_08_200048) do
 
   create_table "tweetes", force: :cascade do |t|
     t.integer "user_id"
-    t.string "tweete"
+    t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -144,6 +141,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_200048) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "private", default: false
     t.string "biography"
+    t.string "profile_picture"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

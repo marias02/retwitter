@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:session][:username].downcase)
         if @user && @user.authenticate(params[:session][:password_digest])
             session[:user_id] = @user.id
-            render json: :no_content
+            render json: session[:user_id]
         else 
-            render json: @user.errors.full_messages
+            session[:user_id] = nil
+            render json: session[:user_id].errors.full_messages
         end
     end
 

@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validate :email_valid?
     validates :phone, presence: true, if: :email_presence, exclusion: { in: [""] }, 
     format: { without: /\s+/, message: "can't have spaces" }
-    has_one_attached :profile_picture
+    has_one_attached :profile
     has_many :tweetes, dependent: :destroy
     has_many :comments, through: :tweetes
     
@@ -109,8 +109,8 @@ class User < ApplicationRecord
     def follow(user)
         @user = User.find(user.id)
 
-        if @user && !following.include?(user) && !FriendshipRequest.find_by(requested_id: user.id)
-            if @user.private
+        if @user && !following.include?(user)
+            if @user.private && !FriendshipRequest.find_by(requested_id: user.id)
               active_friendships_requests.create(requested_id: user.id)
             else
               active_friendships.create(followed_id: user.id)
@@ -154,8 +154,16 @@ class User < ApplicationRecord
         self.email === nil || self.email === ""
     end
 
-    def liked?(tweete)
-        liked_tweetes.find_by(liked_id: tweete.id)
+    def like(id)
+        liked_tweetes.create(liked_id: id)
+    end
+
+    def liked?(id)
+        liked_tweetes.find_by(liked_id: id)
+    end
+
+    def retweet(id)
+        tweetes_retweeted.create(retweeted_id: id)
     end
 
     def retweeted?(tweete)

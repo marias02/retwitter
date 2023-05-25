@@ -45,10 +45,42 @@ div.tweete-top{
 div.tweete-content{
     max-width: 496px;
     overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
 }
 
 img.tweete-img{
     margin-top: 12px;
     border: 1px solid black;
     border-radius: 5%;
+}
+
+#new_tweet_textarea{
+    font-size: 18px;
+    min-width: 80%;
+    outline: none;
+}
+
+// #new_tweete_textarea :focus{
+//     font-size: 18px;
+//     min-width: 80%;
+//     border-color: transparent;
+// }
+
+.tweete_media{
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.prof-cont{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+div.new_tweete_container{
+    margin: 10px;
+}
+
+.tweete_media{
+    border-radius: 20px;
 }

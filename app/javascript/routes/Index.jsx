@@ -2,18 +2,20 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from '../components/Home';
 import SignUp from '../components/SignUp';
-import Login from '../components/Login';
+import Login from '../components/login/login';
 import Logout from '../components/UserBox';
 import Tweets from '../components/Tweets';
+import Tweete from '../components/Tweete';
 
 export default (
     <Router>
         <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/login" exact component={Logout} />
-            <Route path="/home" exact component={Tweets} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/login" component={Logout} />
+            <Route exact path="/home" component={Tweets} />
+            <Route exact path="/tweetes/:id" component={Tweete} />
         </Switch>
     </Router>
 );
