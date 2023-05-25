@@ -37,9 +37,7 @@ class Tweets extends Component {
                         <NewTweete />
                     </div>
                     <div className="usefulness"></div>
-                    <ul className="feed-list">
-                        <TweetsList />
-                    </ul> 
+                    <TweetsList />
                 </div>
             </div>
         );

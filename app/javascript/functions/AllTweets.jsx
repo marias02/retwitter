@@ -35,7 +35,7 @@ const TweetsList = () => {
     }
 
     return(
-        <ul>
+        <ul className="feed-list">
            { content } 
         </ul>
     )

@@ -55,10 +55,17 @@ img.tweete-img{
     border-radius: 5%;
 }
 
-#new_tweete_textarea{
+#new_tweet_textarea{
     font-size: 18px;
     min-width: 80%;
+    outline: none;
 }
+
+// #new_tweete_textarea :focus{
+//     font-size: 18px;
+//     min-width: 80%;
+//     border-color: transparent;
+// }
 
 .tweete_media{
     max-width: 400px;

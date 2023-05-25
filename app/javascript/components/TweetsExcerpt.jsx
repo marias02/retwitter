@@ -20,7 +20,7 @@ const TweetsExcerpt = ({tweet}) => {
                         </div>
                         <div className="tweete-content">
                             <span>{tweet.text}</span>
-                            {tweet.media_url != null ? <img className="tweete_media" src={tweet.media_url} /> : <p>no image to show</p>}
+                            {tweet.media_url != null ? <img className="tweete_media" src={tweet.media_url} /> : <></>}
                         </div>
                         <div className="button-tools">
                             <IconLabelButton type="primary" Text={0} className="comment" iconClass="fa fa-comment-o" />
