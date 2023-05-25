@@ -19,6 +19,45 @@ button, .button{
 #confirm_button{
     width: 90%;
     display: flex;
+
+.contained_button, .outlined_button {
+    border-radius: 9999px;
+    padding: 1.5% 3.5%;
+    font-weight: 550;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.contained_button {
+    background-color: #1DA1F2;
+    color: white;
+    border: 0;
+}
+
+.outlined_button {
+    background-color: white;
+    color: #1DA1F2;
+    border: 1px solid #1DA1F2;
+}
+
+#sign_up_landing_page{
+    margin-bottom: 20px;
+}
+
+#sign_up_landing_page, #login_landing_page{
+    width: 50%;
+    height: 45px;
+    font-size: 16px;
+}
+
+.contained_button.confirm_next{
+    visibility: hidden;
+}
+
+.contained_button.confirm{
+    width: 90%;
+    display: flex;
+    justify-content: center;
     margin-left: 30px;
 }
 

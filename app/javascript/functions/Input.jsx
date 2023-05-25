@@ -16,7 +16,7 @@ function Input({ label, labelClass, inputID, inputClass, name, value, onChange, 
             </div>
         )
     }
-    
+   
 }
 
 export default Input;
